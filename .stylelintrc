@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard",
+
+  "rules": {
+    "declaration-no-important": true,
+    "indentation": [2, {"ignore": ["inside-parens"]}],
+    "at-rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "blockless-after-blockless"
+          ]
+        }
+      ]
+  }
+}
