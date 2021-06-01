@@ -1,6 +1,11 @@
 name: Test codestyle
 
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
