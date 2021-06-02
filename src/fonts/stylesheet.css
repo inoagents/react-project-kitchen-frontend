@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Golos Text";
+  src: url("GolosText-Medium.eot");
+  src: url("GolosText-Medium.eot?#iefix") format("embedded-opentype"),
+    url("GolosText-Medium.woff2") format("woff2"),
+    url("GolosText-Medium.woff") format("woff"),
+    url("GolosText-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  src: url("NeueMachina-Ultrabold.eot");
+  src: url("NeueMachina-Ultrabold.eot?#iefix") format("embedded-opentype"),
+    url("NeueMachina-Ultrabold.woff2") format("woff2"),
+    url("NeueMachina-Ultrabold.woff") format("woff"),
+    url("NeueMachina-Ultrabold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
