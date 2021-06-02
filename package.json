@@ -26,6 +26,7 @@
     "start": "cross-env PORT=4100 react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "rm -rf build && npm run build && scp -r ./build/* articles@217.28.230.206:/home/articles/articles-frontend"
   }
 }
