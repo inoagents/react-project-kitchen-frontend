@@ -4,14 +4,14 @@
   "private": true,
   "devDependencies": {
     "cross-env": "^5.1.4",
-    "react-scripts": "1.1.1"
+    "react-scripts": "4.0.3"
   },
   "dependencies": {
     "editorconfig-checker": "^4.0.2",
     "history": "^4.6.3",
     "marked": "^0.3.6",
     "prop-types": "^15.5.10",
-    "react": "^16.3.0",
+    "react": "^17.0.2",
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.1.2",
@@ -34,5 +34,17 @@
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "rm -rf build && npm run build && scp -r ./build/* articles@217.28.230.206:/home/articles/articles-frontend"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
