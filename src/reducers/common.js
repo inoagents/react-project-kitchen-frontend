@@ -18,9 +18,9 @@ import {
 } from '../constants/actionTypes';
 
 const defaultState = {
-  appName: 'Practicum Project Kitchen',
+  appName: "Проектная кухня",
   token: null,
-  viewChangeCounter: 0
+  viewChangeCounter: 0,
 };
 
 export default (state = defaultState, action) => {

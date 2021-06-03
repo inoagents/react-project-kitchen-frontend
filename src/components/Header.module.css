@@ -1,0 +1,56 @@
+.nav {
+  min-height: 60px;
+  background-color: #ec4926;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1108px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+
+.link {
+  color: #fafafa;
+  font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.link:hover {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+.link:focus {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+.navLinkText {
+  margin: 0 0 0 8px;
+  color: #0a0a0a;
+}
+
+.navLinkActive .navLinkText {
+  color: #fafafa;
+}
+
+svg path {
+  stroke: #0a0a0a;
+}
+
+.navLinkActive svg path {
+  stroke: #fafafa;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+}
