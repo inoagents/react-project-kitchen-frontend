@@ -10,6 +10,7 @@
     "editorconfig-checker": "^4.0.2",
     "history": "^4.6.3",
     "marked": "^0.3.6",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.5.10",
     "react": "^17.0.2",
     "react-dom": "^16.3.0",
