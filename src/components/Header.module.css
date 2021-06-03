@@ -33,8 +33,17 @@
   text-decoration: none;
 }
 
+.navLinkText {
+  margin: 0 0 0 8px;
+  color: #0a0a0a;
+}
+
 .navLinkActive .navLinkText {
   color: #fafafa;
+}
+
+svg path {
+  stroke: #0a0a0a;
 }
 
 .navLinkActive svg path {
@@ -44,13 +53,4 @@
 .navLink {
   display: flex;
   align-items: center;
-}
-
-.navLinkText {
-  margin: 0 0 0 8px;
-  color: #0a0a0a;
-}
-
-svg path {
-  stroke: #0a0a0a;
 }
