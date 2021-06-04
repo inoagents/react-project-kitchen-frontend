@@ -61,17 +61,17 @@
   outline: none;
 }
 
+.input:focus {
+  border: 2px solid #ec4926;
+  padding: 0 14px;
+}
+
 .input:-webkit-autofill,
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus,
 .input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: #fafafa;
-}
-
-.input:focus {
-  border: 2px solid #ec4926;
-  padding: 0 14px;
 }
 
 .input::placeholder {
