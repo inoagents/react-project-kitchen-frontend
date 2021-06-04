@@ -1,0 +1,142 @@
+.authPage {
+  background-color: #0a0a0a;
+  min-height: calc(100vh - 60px);
+  padding-bottom: 40px;
+}
+
+.title {
+  font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  color: #fafafa;
+  text-align: center;
+  margin: 0;
+  padding-top: 48px;
+}
+
+.link {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #ec4926;
+  margin-top: 40px;
+  transition: all 0.2s;
+}
+
+.link:hover {
+  color: #ec4926;
+  opacity: 0.8;
+}
+
+.label {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fafafa;
+  margin-left: 16px;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+.form {
+  margin: 12px auto 0;
+  max-width: 540px;
+}
+
+.input {
+  display: block;
+  min-height: 40px;
+  border: none;
+  background: #292929;
+  border-radius: 20px;
+  width: 100%;
+  padding: 0 16px;
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fafafa;
+  outline: none;
+}
+
+.input:-webkit-autofill {
+  box-shadow: inset 0 0 0 50px #292929; /* Цвет фона */
+  -webkit-text-fill-color: #fafafa; /* цвет текста */
+}
+
+.input:focus {
+  border: 2px solid #ec4926;
+  padding: 0 14px;
+}
+
+.input::placeholder {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #999;
+}
+
+.inputPassword {
+  padding-right: 56px;
+}
+
+.buttonContainer {
+  margin-top: 40px;
+}
+
+.button {
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  background: #ec4926;
+  border-radius: 20px;
+  margin-left: auto;
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #0a0a0a;
+  transition: all 0.2s;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.error {
+  display: none;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ec2626;
+}
+
+.passwordContainer {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eye:hover {
+  opacity: 0.8;
+}

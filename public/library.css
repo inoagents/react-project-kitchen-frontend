@@ -1,5 +1,5 @@
 .logo-font { font-family: titillium web, sans-serif; }
-html { position: relative; min-height: 100vh; padding-bottom: 100px; }
+/* html { position: relative; min-height: 100vh; padding-bottom: 100px; } */
 /* !* Bootstrap v4.0.0-alpha.2 (http://getbootstrap.com)
 * Copyright 2011-2016 Twitter, Inc.
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) *//* !normalize.css commit fe56763 | MIT License | github.com/necolas/normalize.css */html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
