@@ -11,6 +11,9 @@
             "blockless-after-blockless"
           ]
         }
-      ]
+      ],
+    "selector-pseudo-class-no-unknown": [true, {
+      ignorePseudoClasses: ["global"]
+    }]
   }
 }
