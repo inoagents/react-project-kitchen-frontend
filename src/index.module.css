@@ -1,0 +1,163 @@
+@import "../node_modules/normalize.css/normalize.css";
+@import "./fonts/stylesheet.css";
+
+/* Define global vars */
+:root {
+  --background: #0a0a0a;
+  --background-element: #292929;
+  --offset-base-variable: 2px;
+  --offset-base-size: 4px;
+  --common-border-radius: 20px;
+  --common-border-radius-s: 16px;
+  --text-primary-color: #fafafa;
+  --text-secondary-color: #0a0a0a;
+  --text-inactive-color: #999;
+  --colors-interface-accent: #ec4926;
+  --colors-interface-error: #ec2626;
+  --colors-interface-success: #26ec26;
+  --colors-interface-disabled: #666;
+
+  /* just plain RGB colors without opacity */
+  --colors-interface-hover: #bd3a1e;
+  --colors-interface-active: #f06d51;
+  --common-box-shadow: inset 0 -1px 0 #212531;
+  --common-box-shadow-alt: inset 0 -2px 0 #ec4926;
+  --common-text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --common-transition: all 0.3s ease-in;
+}
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-primary-color);
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  background: var(--background);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Define global classes for composing in CSS modules */
+
+/* Text */
+
+:global .text {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+:global .heading {
+  font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 64px;
+}
+
+:global .subheading {
+  font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+:global .headline {
+  font-family: "Neue Machina", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+:global .caption {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Links */
+
+:global .link {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+}
+
+:global .link:hover,
+:global .link:focus {
+  color: var(--colors-interface-hover);
+}
+
+:global .link:active {
+  color: var(--colors-interface-active);
+}
+
+:global .link:disabled {
+  color: var(--colors-interface-disabled);
+  text-shadow: var(--common-text-shadow);
+}
+
+/* Buttons */
+
+:global .button {
+  padding: 8px 16px;
+  color: var(--text-secondary-color);
+  background: var(--colors-interface-accent);
+  border-radius: var(--common-border-radius);
+}
+
+:global .button:hover,
+:global .button:focus {
+  background: var(--colors-interface-hover);
+}
+
+:global .button:active {
+  background: var(--colors-interface-active);
+}
+
+:global .button:disabled {
+  background: var(--colors-interface-disabled);
+}
+
+/* Containers */
+
+:global .flex_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+:global .flex_column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+:global .not_a_list {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
