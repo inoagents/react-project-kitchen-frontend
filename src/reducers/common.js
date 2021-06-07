@@ -19,6 +19,7 @@ import {
 
 const defaultState = {
   appName: "Проектная кухня",
+  appTagline: "Место, где готовится новый опыт",
   token: null,
   viewChangeCounter: 0,
 };
