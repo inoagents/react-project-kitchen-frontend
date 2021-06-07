@@ -17,6 +17,10 @@
   margin-bottom: 0;
 }
 
+.tabLinkContainer {
+  margin-bottom: calc(var(--offset-base-size) * 4);
+}
+
 .tabLink {
   border-radius: 0;
   border: none;
