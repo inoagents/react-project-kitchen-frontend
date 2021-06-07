@@ -50,7 +50,7 @@ const TagFilterTab = props => {
   return (
     <li className="nav-item">
       <a href="" className={`${styles.tabLink} ${styles.tabLinkActive}`}>
-        <i className="ion-pound"></i> {props.tag}
+        #{props.tag}
       </a>
     </li>
   );

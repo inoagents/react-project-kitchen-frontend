@@ -46,3 +46,9 @@
   border-bottom: 1px solid var(--colors-interface-accent);
   color: var(--text-primary-color);
 }
+
+.tagsSidebar {
+  padding: calc(var(--offset-base-size) * 4);
+  border-radius: var(--common-border-radius-s);
+  background: var(--colors-interface-accent);
+}

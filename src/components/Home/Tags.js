@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "./Home.module.css";
 import agent from '../../agent';
 
 const Tags = props => {
@@ -28,7 +29,7 @@ const Tags = props => {
     );
   } else {
     return (
-      <div>Loading Tags...</div>
+      <div>Загрузка тегов...</div>
     );
   }
 };

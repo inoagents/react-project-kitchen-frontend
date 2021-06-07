@@ -54,12 +54,13 @@ class Home extends React.Component {
             <MainView />
 
             <div className="col-md-3">
-              <div className="sidebar">
+              <div className={styles.tagsSidebar}>
 
-                <p>Popular Tags</p>
+                <p>Популярные теги</p>
 
                 <Tags
-                  tags={this.props.tags}
+                  // tags={this.props.tags}
+                  tags={['123', '234']}
                   onClickTag={this.props.onClickTag} />
 
               </div>
