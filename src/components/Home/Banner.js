@@ -1,10 +1,7 @@
 import React from 'react';
 import styles from "./Home.module.css";
 
-const Banner = ({ appName, appTagline, token }) => {
-  if (token) {
-    return null;
-  }
+const Banner = ({ appName, appTagline }) => {
   return (
     <div className={styles.bannerContainer}>
       <div className="container">
