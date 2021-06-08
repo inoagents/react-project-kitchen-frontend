@@ -59,8 +59,7 @@ class Home extends React.Component {
                 <p>Популярные теги</p>
 
                 <Tags
-                  // tags={this.props.tags}
-                  tags={['123', '234']}
+                  tags={this.props.tags}
                   onClickTag={this.props.onClickTag} />
 
               </div>
