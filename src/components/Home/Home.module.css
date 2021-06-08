@@ -1,0 +1,87 @@
+.bannerContainer {
+  text-align: center;
+  background-color: var(--background);
+  box-shadow: var(--common-box-shadow);
+  padding: calc(var(--offset-base-size) * 8);
+  margin-bottom: calc(var(--offset-base-size) * 8);
+}
+
+.bannerHeading {
+  composes: heading from global;
+  margin-top: 0;
+  margin-bottom: calc(var(--offset-base-size) * 2);
+}
+
+.bannerSubheading {
+  composes: headline from global;
+  margin-bottom: 0;
+}
+
+/* Tab Links should be reused in the Profile component. Maybe these classes should be moved in global CSS */
+
+.tabLinkContainer {
+  margin-bottom: calc(var(--offset-base-size) * 4);
+}
+
+.tabLink {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: var(--background);
+  color: var(--colors-interface-disabled);
+  padding: calc(var(--offset-base-size) * 4) calc(var(--offset-base-size) * 6);
+}
+
+.tabLink:hover {
+  color: var(--colors-interface-hover);
+  text-decoration: none;
+}
+
+.tabLink:active,
+.tabLink:focus {
+  color: var(--text-primary-color);
+  text-decoration: none;
+}
+
+.tabLinkActive {
+  background: var(--background);
+  border-bottom: 1px solid var(--colors-interface-accent);
+  color: var(--text-primary-color);
+}
+
+.tagsSidebar {
+  padding: calc(var(--offset-base-size) * 4);
+  border-radius: var(--common-border-radius-s);
+  background: var(--colors-interface-accent);
+}
+
+.tagsSidebar p {
+  color: var(--background);
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--offset-base-size);
+}
+
+.tagItem {
+  composes: caption from global;
+  color: var(--text-primary-color);
+  background-color: transparent;
+  display: inline-block;
+  padding: var(--offset-base-size) calc(var(--offset-base-size) * 2);
+  white-space: nowrap;
+  border-radius: 100px;
+  border: 1px solid var(--text-primary-color);
+  box-sizing: border-box;
+}
+
+.tagItem:hover,
+.tagItem:active,
+.tagItem:focus {
+  background: var(--text-primary-color);
+  color: var(--background);
+  text-decoration: none;
+}

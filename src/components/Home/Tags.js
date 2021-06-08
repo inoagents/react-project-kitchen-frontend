@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from "./Home.module.css";
 import agent from '../../agent';
 
 const Tags = props => {
   const tags = props.tags;
   if (tags) {
     return (
-      <div className="tag-list">
+      <div className={styles.tagsList}>
         {
           tags.map(tag => {
             const handleClick = ev => {
@@ -16,7 +17,7 @@ const Tags = props => {
             return (
               <a
                 href=""
-                className="tag-default tag-pill"
+                className={styles.tagItem}
                 key={tag}
                 onClick={handleClick}>
                 {tag}
@@ -28,7 +29,7 @@ const Tags = props => {
     );
   } else {
     return (
-      <div>Loading Tags...</div>
+      <div>Загрузка тегов...</div>
     );
   }
 };

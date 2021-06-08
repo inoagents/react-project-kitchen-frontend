@@ -1,6 +1,7 @@
 import ArticleList from '../ArticleList';
 import React from 'react';
 import agent from '../../agent';
+import styles from "./Home.module.css";
 import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
 
@@ -14,9 +15,9 @@ const YourFeedTab = props => {
     return (
       <li className="nav-item">
         <a  href=""
-            className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
+            className={ props.tab === 'feed' ? `${styles.tabLink} ${styles.tabLinkActive}` : styles.tabLink }
             onClick={clickHandler}>
-          Your Feed
+          Ваша лента
         </a>
       </li>
     );
@@ -33,9 +34,9 @@ const GlobalFeedTab = props => {
     <li className="nav-item">
       <a
         href=""
-        className={ props.tab === 'all' ? 'nav-link active' : 'nav-link' }
+        className={ props.tab === 'all' ? `${styles.tabLink} ${styles.tabLinkActive}` : styles.tabLink }
         onClick={clickHandler}>
-        Global Feed
+        Лента
       </a>
     </li>
   );
@@ -48,8 +49,8 @@ const TagFilterTab = props => {
 
   return (
     <li className="nav-item">
-      <a href="" className="nav-link active">
-        <i className="ion-pound"></i> {props.tag}
+      <a href="" className={`${styles.tabLink} ${styles.tabLinkActive}`}>
+        #{props.tag}
       </a>
     </li>
   );
@@ -68,8 +69,8 @@ const mapDispatchToProps = dispatch => ({
 const MainView = props => {
   return (
     <div className="col-md-9">
-      <div className="feed-toggle">
-        <ul className="nav nav-pills outline-active">
+      <div className={styles.tabLinkContainer}>
+        <ul className="nav nav-pills">
 
           <YourFeedTab
             token={props.token}

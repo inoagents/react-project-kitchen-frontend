@@ -3,6 +3,7 @@ import MainView from './MainView';
 import React from 'react';
 import Tags from './Tags';
 import agent from '../../agent';
+import styles from "./Home.module.css";
 import { connect } from 'react-redux';
 import {
   HOME_PAGE_LOADED,
@@ -15,6 +16,7 @@ const Promise = global.Promise;
 const mapStateToProps = state => ({
   ...state.home,
   appName: state.common.appName,
+  appTagline: state.common.appTagline,
   token: state.common.token
 });
 
@@ -45,16 +47,16 @@ class Home extends React.Component {
     return (
       <div className="home-page">
 
-        <Banner token={this.props.token} appName={this.props.appName} />
+        <Banner appName={this.props.appName} appTagline={this.props.appTagline} />
         <div className="container page">
 
           <div className="row">
             <MainView />
 
             <div className="col-md-3">
-              <div className="sidebar">
+              <div className={styles.tagsSidebar}>
 
-                <p>Popular Tags</p>
+                <p>Популярные теги</p>
 
                 <Tags
                   tags={this.props.tags}

@@ -1,16 +1,16 @@
 import React from 'react';
+import styles from "./Home.module.css";
 
-const Banner = ({ appName, token }) => {
-  if (token) {
-    return null;
-  }
+const Banner = ({ appName, appTagline }) => {
   return (
-    <div className="banner">
+    <div className={styles.bannerContainer}>
       <div className="container">
-        <h1 className="logo-font">
-          {appName.toLowerCase()}
+        <h1 className={styles.bannerHeading}>
+          {appName}
         </h1>
-        <p>Your community project starter pack.</p>
+        <p className={styles.bannerSubheading}>
+          {appTagline}
+        </p>
       </div>
     </div>
   );
