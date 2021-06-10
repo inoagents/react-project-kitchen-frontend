@@ -1,4 +1,4 @@
-import ArticlePreview from './ArticlePreview';
+import ArticlePreview from './ArticlePreview/ArticlePreview.js';
 import ListPagination from './ListPagination';
 import React from 'react';
 
