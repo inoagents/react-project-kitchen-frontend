@@ -161,3 +161,35 @@ h4 {
   margin-block-end: 0;
   padding-inline-start: 0;
 }
+
+/* Tab Links classes are used in the Home, Profile and ProfileFavorites components */
+
+:global .tabLinkContainer {
+  margin-bottom: calc(var(--offset-base-size) * 4);
+}
+
+:global .tabLink {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: var(--background);
+  color: var(--colors-interface-disabled);
+  padding: calc(var(--offset-base-size) * 4) calc(var(--offset-base-size) * 6);
+}
+
+:global .tabLink:hover {
+  color: var(--colors-interface-hover);
+  text-decoration: none;
+}
+
+:global .tabLink:active,
+:global .tabLink:focus {
+  color: var(--text-primary-color);
+  text-decoration: none;
+}
+
+:global .tabLinkActive {
+  background: var(--background);
+  border-bottom: 1px solid var(--colors-interface-accent);
+  color: var(--text-primary-color);
+}

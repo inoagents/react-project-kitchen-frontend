@@ -17,36 +17,18 @@
   margin-bottom: 0;
 }
 
-/* Tab Links should be reused in the Profile component. Maybe these classes should be moved in global CSS */
+/* Tab Links classes are imported from global CSS */
 
 .tabLinkContainer {
-  margin-bottom: calc(var(--offset-base-size) * 4);
+  composes: tabLinkContainer from global;
 }
 
 .tabLink {
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid transparent;
-  background: var(--background);
-  color: var(--colors-interface-disabled);
-  padding: calc(var(--offset-base-size) * 4) calc(var(--offset-base-size) * 6);
-}
-
-.tabLink:hover {
-  color: var(--colors-interface-hover);
-  text-decoration: none;
-}
-
-.tabLink:active,
-.tabLink:focus {
-  color: var(--text-primary-color);
-  text-decoration: none;
+  composes: tabLink from global;
 }
 
 .tabLinkActive {
-  background: var(--background);
-  border-bottom: 1px solid var(--colors-interface-accent);
-  color: var(--text-primary-color);
+  composes: tabLinkActive from global;
 }
 
 .tagsSidebar {
