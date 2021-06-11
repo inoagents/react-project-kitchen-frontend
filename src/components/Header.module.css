@@ -45,7 +45,7 @@
 
 svg path {
   stroke: #0a0a0a;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .navLinkActive svg path {
@@ -74,5 +74,5 @@ svg path {
 }
 
 .navItem {
-  margin: 0 !important;
+  margin: 0;
 }
