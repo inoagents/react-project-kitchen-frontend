@@ -2,14 +2,19 @@ import ArticleList from './ArticleList';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import agent from '../agent';
+import Tags from './Tags';
 import styles from './Profile.module.css';
 import { connect } from 'react-redux';
 import {
   FOLLOW_USER,
   UNFOLLOW_USER,
   PROFILE_PAGE_LOADED,
-  PROFILE_PAGE_UNLOADED
+  PROFILE_PAGE_UNLOADED,
+  APPLY_TAG_FILTER,
+  CHANGE_TAB
 } from '../constants/actionTypes';
+
+const Promise = global.Promise;
 
 const settingsIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +57,7 @@ const FollowUserButton = props => {
 
   const handleClick = ev => {
     ev.preventDefault();
-    // FIXME: Unfollow doesn't work, throws error
+    // FIXME: Follow doesn't work, unfollow throwed error (slug don't defined)
     if (props.user.following) {
       props.unfollow(props.user.username)
     } else {
@@ -65,11 +70,11 @@ const FollowUserButton = props => {
       className={`btn ${styles.bannerButton}`}
       onClick={handleClick}>
       {props.user.following ? (
-        plusIcon()
-      ) : (
         minusIcon()
+      ) : (
+        plusIcon()
       )}
-      {props.user.following ? 'Отписаться' : 'Подписаться'} {props.user.username}
+      {props.user.following ? 'Отписаться' : 'Подписаться'}
     </button>
   );
 };
@@ -77,10 +82,17 @@ const FollowUserButton = props => {
 const mapStateToProps = state => ({
   ...state.articleList,
   currentUser: state.common.currentUser,
-  profile: state.profile
+  profile: state.profile,
+  tags: state.profile.tags
 });
 
 const mapDispatchToProps = dispatch => ({
+  onClickTag: (tag, pager, payload) => dispatch({ 
+    type: APPLY_TAG_FILTER, tag, pager, payload
+   }),
+  onTabClick: (tab, pager, payload) => dispatch({ 
+    type: CHANGE_TAB, tab, pager, payload 
+  }),
   onFollow: username => dispatch({
     type: FOLLOW_USER,
     payload: agent.Profile.follow(username)
@@ -93,11 +105,72 @@ const mapDispatchToProps = dispatch => ({
   onUnload: () => dispatch({ type: PROFILE_PAGE_UNLOADED })
 });
 
+const YourFeedTab = props => {
+  const clickHandler = ev => {
+    ev.preventDefault();
+    props.onTabClick('all', agent.Articles.all, agent.Articles.byAuthor(props.username));
+  }
+
+  return (
+    <li className="nav-item">
+      <a  href=""
+          className={
+            (typeof props.tab === 'undefined') ? (
+              `${styles.tabLink} ${styles.tabLinkActive}`
+            ) : (
+              props.tab == 'all' ? (
+                `${styles.tabLink} ${styles.tabLinkActive} `
+              ) : (
+                styles.tabLink
+              ))
+            }
+          onClick={clickHandler}>
+        Ваши посты
+      </a>
+    </li>
+  );
+};
+
+const LikedFeedTab = props => {
+  const clickHandler = ev => {
+    ev.preventDefault();
+    // TODO: Check this code when article liking will be fixed
+    props.onTabClick('liked', agent.Articles.all, agent.Articles.favoritedBy(props.username));
+  };
+  return (
+    <li className="nav-item">
+      <a
+        href=""
+        className={ props.tab === 'liked' ? `${styles.tabLink} ${styles.tabLinkActive}` : styles.tabLink }
+        onClick={clickHandler}>
+        Любимые посты
+      </a>
+    </li>
+  );
+};
+
+const TagFilterTab = props => {
+  if (!props.tag) {
+    return null;
+  }
+
+  return (
+    <li className="nav-item">
+      <a 
+        href="" 
+        className={`${styles.tabLink} ${styles.tabLinkActive}`}>
+        #{props.tag}
+      </a>
+    </li>
+  );
+};
+
 class Profile extends React.Component {
   componentWillMount() {
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
-      agent.Articles.byAuthor(this.props.match.params.username)
+      agent.Articles.byAuthor(this.props.match.params.username),
+      agent.Tags.getAll()
     ]));
   }
 
@@ -108,21 +181,15 @@ class Profile extends React.Component {
   renderTabs() {
     return (
       <ul className="nav nav-pills">
-        <li className="nav-item">
-          <Link
-            className={`${styles.tabLink} ${styles.tabLinkActive}`}
-            to={`/@${this.props.profile.username}`}>
-            Ваши посты
-          </Link>
-        </li>
+        <YourFeedTab 
+          tab={this.props.tab} 
+          onTabClick={this.props.onTabClick} 
+          username={this.props.match.params.username} 
+        />
 
-        <li className="nav-item">
-          <Link
-            className={styles.tabLink}
-            to={`/@${this.props.profile.username}/favorites`}>
-            Любимые посты
-          </Link>
-        </li>
+        <LikedFeedTab tab={this.props.tab} onTabClick={this.props.onTabClick} />
+
+        <TagFilterTab tag={this.props.tag} tab={this.props.tab} onTabClick={this.props.onTabClick} />
       </ul>
     );
   }
@@ -164,7 +231,7 @@ class Profile extends React.Component {
         <div className="container">
           <div className="row">
 
-            <div className="col-xs-12 col-md-10 offset-md-1">
+            <div className="col-md-9">
 
               <div className={styles.tabLinkContainer}>
                 {this.renderTabs()}
@@ -176,6 +243,12 @@ class Profile extends React.Component {
                 articlesCount={this.props.articlesCount}
                 state={this.props.currentPage} />
             </div>
+
+            <Tags
+              tags={this.props.tags}
+              // TODO: Implement feed filtering by tag (now it's all articles by tag)
+              onClickTag={this.props.onClickTag} 
+            />
 
           </div>
         </div>
