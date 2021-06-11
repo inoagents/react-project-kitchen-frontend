@@ -35,7 +35,7 @@ class ProfileFavorites extends Profile {
           <Link
             className={styles.tabLink}
             to={`/@${this.props.profile.username}`}>
-            My Articles
+            Ваши посты
           </Link>
         </li>
 
@@ -43,7 +43,7 @@ class ProfileFavorites extends Profile {
           <Link
             className={`${styles.tabLink} ${styles.tabLinkActive}`}
             to={`/@${this.props.profile.username}/favorites`}>
-            Favorited Articles
+            Любимые посты
           </Link>
         </li>
       </ul>
