@@ -193,3 +193,13 @@ h4 {
   border-bottom: 1px solid var(--colors-interface-accent);
   color: var(--text-primary-color);
 }
+
+/* Banner Container class are used in the Home, Profile and Article components */
+
+:global .bannerContainer {
+  text-align: center;
+  background-color: var(--background);
+  box-shadow: var(--common-box-shadow);
+  padding: calc(var(--offset-base-size) * 8);
+  margin-bottom: calc(var(--offset-base-size) * 8);
+}

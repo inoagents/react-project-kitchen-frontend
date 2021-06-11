@@ -1,9 +1,5 @@
 .bannerContainer {
-  text-align: center;
-  background-color: var(--background);
-  box-shadow: var(--common-box-shadow);
-  padding: calc(var(--offset-base-size) * 8);
-  margin-bottom: calc(var(--offset-base-size) * 8);
+  composes: bannerContainer from global;
 }
 
 .bannerHeading {
