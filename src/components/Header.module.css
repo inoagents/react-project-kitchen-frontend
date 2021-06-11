@@ -36,6 +36,7 @@
 .navLinkText {
   margin: 0 0 0 8px;
   color: #0a0a0a;
+  transition: all 0.2s;
 }
 
 .navLinkActive .navLinkText {
@@ -44,6 +45,7 @@
 
 svg path {
   stroke: #0a0a0a;
+  transition: all 0.2s;
 }
 
 .navLinkActive svg path {
@@ -53,4 +55,24 @@ svg path {
 .navLink {
   display: flex;
   align-items: center;
+  padding: 9px 17px;
+  margin: 0;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navLink:hover svg path {
+  stroke: #fafafa;
+}
+
+.navLink:hover .navLinkText {
+  color: #fafafa;
+}
+
+.navItem {
+  margin: 0;
 }

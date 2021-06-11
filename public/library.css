@@ -1488,7 +1488,7 @@ input[type=button].btn-block { width: 100%; }
 .navbar-nav .nav-item { float: left; }
 .navbar-nav .nav-link { display: block; padding-top: 0.425rem; padding-bottom: 0.425rem; }
 .navbar-nav .nav-link + .nav-link { margin-left: 1rem; }
-.navbar-nav .nav-item + .nav-item { margin-left: 1rem; }
+.navbar-nav .nav-item + .nav-item { margin-left: 0; }
 .navbar-light .navbar-brand { color: rgba(0, 0, 0, 0.8); }
 
 .navbar-light .navbar-brand:focus,
