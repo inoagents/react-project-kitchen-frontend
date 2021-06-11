@@ -2,6 +2,7 @@ import { Profile, mapStateToProps } from './Profile';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import agent from '../agent';
+import styles from "./Profile.module.css";
 import { connect } from 'react-redux';
 import {
   PROFILE_PAGE_LOADED,
@@ -29,10 +30,10 @@ class ProfileFavorites extends Profile {
 
   renderTabs() {
     return (
-      <ul className="nav nav-pills outline-active">
+      <ul className="nav nav-pills">
         <li className="nav-item">
           <Link
-            className="nav-link"
+            className={styles.tabLink}
             to={`/@${this.props.profile.username}`}>
             My Articles
           </Link>
@@ -40,7 +41,7 @@ class ProfileFavorites extends Profile {
 
         <li className="nav-item">
           <Link
-            className="nav-link active"
+            className={`${styles.tabLink} ${styles.tabLinkActive}`}
             to={`/@${this.props.profile.username}/favorites`}>
             Favorited Articles
           </Link>

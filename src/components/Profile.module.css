@@ -1,0 +1,45 @@
+.bannerContainer {
+  composes: bannerContainer from global;
+}
+
+.bannerUserName {
+  composes: headline from global;
+  margin-bottom: 0;
+}
+
+.bannerUserImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
+  margin-bottom: calc(var(--offset-base-size) * 2);
+}
+
+.bannerUserBio {
+  composes: text from global;
+  margin-top: calc(var(--offset-base-size) * 2);
+  margin-bottom: calc(var(--offset-base-size) * 4);
+  color: var(--text-inactive-color);
+}
+
+.bannerButton {
+  composes: button from global;
+  composes: text from global;
+  float: right;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--offset-base-size) * 2);
+}
+
+/* Tab Links classes are imported from global CSS */
+
+.tabLinkContainer {
+  composes: tabLinkContainer from global;
+}
+
+.tabLink {
+  composes: tabLink from global;
+}
+
+.tabLinkActive {
+  composes: tabLinkActive from global;
+}

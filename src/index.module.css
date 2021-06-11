@@ -129,14 +129,17 @@ h4 {
 :global .button:hover,
 :global .button:focus {
   background: var(--colors-interface-hover);
+  color: var(--text-secondary-color);
 }
 
 :global .button:active {
   background: var(--colors-interface-active);
+  color: var(--text-secondary-color);
 }
 
 :global .button:disabled {
   background: var(--colors-interface-disabled);
+  color: var(--text-inactive-color);
 }
 
 /* Containers */
