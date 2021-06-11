@@ -6,7 +6,7 @@ const LoggedOutView = (props) => {
   if (!props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-        <li className="nav-item">
+        <li className={`nav-item ${styles.navItem}`}>
           <NavLink
             to="/"
             exact
@@ -41,7 +41,7 @@ const LoggedOutView = (props) => {
           </NavLink>
         </li>
 
-        <li className="nav-item">
+        <li className={`nav-item ${styles.navItem}`}>
           <NavLink
             to="/login"
             className="nav-link"
@@ -84,7 +84,7 @@ const LoggedInView = (props) => {
   if (props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-        <li className="nav-item">
+        <li className={`nav-item ${styles.navItem}`}>
           <NavLink
             to="/"
             exact
@@ -119,7 +119,7 @@ const LoggedInView = (props) => {
           </NavLink>
         </li>
 
-        <li className="nav-item">
+        <li className={`nav-item ${styles.navItem}`}>
           <NavLink
             to="/editor"
             className="nav-link"
@@ -153,7 +153,7 @@ const LoggedInView = (props) => {
           </NavLink>
         </li>
 
-        <li className="nav-item">
+        <li className={`nav-item ${styles.navItem}`}>
           <NavLink
             to="/settings"
             className="nav-link"
@@ -187,7 +187,7 @@ const LoggedInView = (props) => {
           </NavLink>
         </li>
 
-        <li className="nav-item">
+        <li className={`nav-item ${styles.navItem}`}>
           <NavLink
             to={`/@${props.currentUser.username}`}
             className="nav-link"
