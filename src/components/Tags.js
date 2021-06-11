@@ -31,7 +31,7 @@ const Tags = props => {
               })
             }
           </div>
-        
+
         </div>
       </div>
     );

@@ -87,11 +87,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickTag: (tag, pager, payload) => dispatch({ 
+  onClickTag: (tag, pager, payload) => dispatch({
     type: APPLY_TAG_FILTER, tag, pager, payload
-   }),
-  onTabClick: (tab, pager, payload) => dispatch({ 
-    type: CHANGE_TAB, tab, pager, payload 
+  }),
+  onTabClick: (tab, pager, payload) => dispatch({
+    type: CHANGE_TAB, tab, pager, payload
   }),
   onFollow: username => dispatch({
     type: FOLLOW_USER,
@@ -156,8 +156,8 @@ const TagFilterTab = props => {
 
   return (
     <li className="nav-item">
-      <a 
-        href="" 
+      <a
+        href=""
         className={`${styles.tabLink} ${styles.tabLinkActive}`}>
         #{props.tag}
       </a>
@@ -181,10 +181,10 @@ class Profile extends React.Component {
   renderTabs() {
     return (
       <ul className="nav nav-pills">
-        <YourFeedTab 
-          tab={this.props.tab} 
-          onTabClick={this.props.onTabClick} 
-          username={this.props.match.params.username} 
+        <YourFeedTab
+          tab={this.props.tab}
+          onTabClick={this.props.onTabClick}
+          username={this.props.match.params.username}
         />
 
         <LikedFeedTab tab={this.props.tab} onTabClick={this.props.onTabClick} />
@@ -247,7 +247,7 @@ class Profile extends React.Component {
             <Tags
               tags={this.props.tags}
               // TODO: Implement feed filtering by tag (now it's all articles by tag)
-              onClickTag={this.props.onClickTag} 
+              onClickTag={this.props.onClickTag}
             />
 
           </div>

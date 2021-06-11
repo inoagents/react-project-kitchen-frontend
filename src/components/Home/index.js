@@ -53,7 +53,7 @@ class Home extends React.Component {
             <MainView />
             <Tags
               tags={this.props.tags}
-              onClickTag={this.props.onClickTag} 
+              onClickTag={this.props.onClickTag}
             />
           </div>
         </div>
