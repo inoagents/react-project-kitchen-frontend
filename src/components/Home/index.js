@@ -1,9 +1,8 @@
 import Banner from './Banner';
 import MainView from './MainView';
 import React from 'react';
-import Tags from './Tags';
+import Tags from '../Tags';
 import agent from '../../agent';
-import styles from "./Home.module.css";
 import { connect } from 'react-redux';
 import {
   HOME_PAGE_LOADED,
@@ -52,18 +51,10 @@ class Home extends React.Component {
 
           <div className="row">
             <MainView />
-
-            <div className="col-md-3">
-              <div className={styles.tagsSidebar}>
-
-                <p>Популярные теги</p>
-
-                <Tags
-                  tags={this.props.tags}
-                  onClickTag={this.props.onClickTag} />
-
-              </div>
-            </div>
+            <Tags
+              tags={this.props.tags}
+              onClickTag={this.props.onClickTag}
+            />
           </div>
         </div>
 

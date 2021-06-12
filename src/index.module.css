@@ -129,14 +129,17 @@ h4 {
 :global .button:hover,
 :global .button:focus {
   background: var(--colors-interface-hover);
+  color: var(--text-secondary-color);
 }
 
 :global .button:active {
   background: var(--colors-interface-active);
+  color: var(--text-secondary-color);
 }
 
 :global .button:disabled {
   background: var(--colors-interface-disabled);
+  color: var(--text-inactive-color);
 }
 
 /* Containers */
@@ -162,7 +165,7 @@ h4 {
   padding-inline-start: 0;
 }
 
-/* Tab Links classes are used in the Home, Profile and ProfileFavorites components */
+/* Tab Links classes are used in the Home and Profile components */
 
 :global .tabLinkContainer {
   margin-bottom: calc(var(--offset-base-size) * 4);
