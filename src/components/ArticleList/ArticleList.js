@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticlePreview from './ArticlePreview/ArticlePreview.js';
+import ArticlePreview from '../ArticlePreview/ArticlePreview';
 import ListPagination from './ListPagination';
 import styles from './ArticleList.module.css';
 

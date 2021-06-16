@@ -1,6 +1,6 @@
-import ArticleList from './ArticleList';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ArticleList from './ArticleList/ArticleList';
 import agent from '../agent';
 import Tags from './Tags';
 import styles from './Profile.module.css';
