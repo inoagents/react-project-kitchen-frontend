@@ -1,6 +1,6 @@
 import React from 'react';
 import ArticlePreview from '../ArticlePreview/ArticlePreview';
-import ListPagination from './ListPagination';
+import ListPagination from '../ListPagination/ListPagination';
 import styles from './ArticleList.module.css';
 
 const ArticleList = ({ articles, pager, articlesCount, currentPage }) => {
