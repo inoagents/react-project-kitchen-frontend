@@ -1,4 +1,4 @@
-import ArticleList from '../ArticleList';
+import ArticleList from '../ArticleList/ArticleList';
 import React from 'react';
 import agent from '../../agent';
 import styles from "./Home.module.css";

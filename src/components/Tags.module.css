@@ -39,3 +39,8 @@
   color: var(--background);
   text-decoration: none;
 }
+
+.tagItem.tagItemInactive {
+  color: var(--text-primary-color);
+  background-color: transparent;
+}
