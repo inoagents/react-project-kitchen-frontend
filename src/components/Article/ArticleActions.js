@@ -3,6 +3,7 @@ import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { DELETE_ARTICLE } from '../../constants/actionTypes';
+import styles from './ArticleActions.module.css';
 
 const mapDispatchToProps = dispatch => ({
   onClickDelete: payload =>
@@ -16,16 +17,16 @@ const ArticleActions = props => {
   };
   if (props.canModify) {
     return (
-      <span>
+      <span className={`${props.className} ${styles.articleActions}`}>
 
         <Link
           to={`/editor/${article.slug}`}
-          className="btn btn-outline-secondary btn-sm">
-          <i className="ion-edit"></i> Edit Article
+          className={`${styles.button} ${styles.buttonPrimary}`}>
+          <i className="ion-edit"></i> Редактировать запись
         </Link>
 
-        <button className="btn btn-outline-danger btn-sm" onClick={del}>
-          <i className="ion-trash-a"></i> Delete Article
+        <button className={styles.button} onClick={del}>
+          <i className="ion-trash-a"></i> Удалить запись
         </button>
 
       </span>
@@ -33,7 +34,7 @@ const ArticleActions = props => {
   }
 
   return (
-    <span>
+    <span className={props.className}>
     </span>
   );
 };
