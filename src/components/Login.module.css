@@ -65,6 +65,14 @@
   border: 2px solid #ec2626;
 }
 
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fafafa;
+}
+
 .input:focus:valid {
   border: 2px solid #ec4926;
   padding: 0 14px;
@@ -73,14 +81,6 @@
 .input:focus:invalid {
   border: 2px solid #ec2626;
   padding: 0 14px;
-}
-
-.input:-webkit-autofill,
-.input:-webkit-autofill:hover,
-.input:-webkit-autofill:focus,
-.input:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: #fafafa;
 }
 
 .input::placeholder {
