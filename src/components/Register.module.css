@@ -31,6 +31,11 @@
   opacity: 0.8;
 }
 
+.form {
+  margin: 12px auto 0;
+  max-width: 540px;
+}
+
 .label {
   font-family: "Golos", Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -41,9 +46,24 @@
   margin-top: 12px;
 }
 
-.form {
-  margin: 12px auto 0;
-  max-width: 540px;
+.inputContainer {
+  position: relative;
+}
+
+.attention {
+  background: url(../images/attensionIcon.svg);
+  width: 24px;
+  height: 24px;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.attention_active {
+  opacity: 1;
 }
 
 .input {
@@ -90,16 +110,12 @@
   color: #999;
 }
 
-.inputPassword {
-  padding-right: 56px;
-}
-
 .buttonContainer {
   margin-top: 40px;
 }
 
 .button {
-  width: 120px;
+  width: 197px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -124,6 +140,10 @@
   opacity: 0.8;
 }
 
+.button:disabled {
+  background: #666666;
+}
+
 .error {
   display: none;
   margin: 4px 0 0 16px;
@@ -131,23 +151,4 @@
   font-weight: 500;
   font-size: 16px;
   color: #ec2626;
-}
-
-.passwordContainer {
-  position: relative;
-}
-
-.eye {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 16px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.eye:hover {
-  opacity: 0.8;
 }
