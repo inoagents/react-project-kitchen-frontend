@@ -194,7 +194,9 @@ const LoggedInView = (props) => {
             activeClassName={styles.navLinkActive}
           >
             <div className={styles.navLink}>
-              <p className={styles.navLinkText}>{props.currentUser.username}</p>
+              <p className={styles.navLinkText} style={{ marginLeft: 0 }}>
+                {props.currentUser.username}
+              </p>
             </div>
           </NavLink>
         </li>
