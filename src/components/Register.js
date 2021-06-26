@@ -100,6 +100,12 @@ class Register extends React.Component {
         "block";
       this.inputTextRef.current.parentElement.nextElementSibling.textContent =
         "Пользователь с таким именем уже существует, укажите другое имя";
+    } else if (errors && errors.username === "is invalid") {
+      this.inputTextRef.current.classList.add(styles.input_error);
+      this.inputTextRef.current.parentElement.nextElementSibling.style.display =
+        "block";
+      this.inputTextRef.current.parentElement.nextElementSibling.textContent =
+        "Неверно указано имя";
     }
     if (errors && errors.email === "is invalid") {
       this.inputEmailRef.current.classList.add(styles.input_error);
@@ -143,7 +149,6 @@ class Register extends React.Component {
                   <input
                     ref={this.inputTextRef}
                     required
-                    className="form-control form-control-lg"
                     type="text"
                     placeholder="Username"
                     value={this.props.username}
@@ -162,7 +167,6 @@ class Register extends React.Component {
                   <input
                     ref={this.inputEmailRef}
                     required
-                    className="form-control form-control-lg"
                     type="email"
                     placeholder="Email"
                     value={this.props.email}
@@ -180,7 +184,6 @@ class Register extends React.Component {
                   <div className={styles.attention} />
                   <input
                     required
-                    className="form-control form-control-lg"
                     type="password"
                     placeholder="Password"
                     value={this.props.password}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
+import avatar from "../images/avatar.svg";
 
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
@@ -194,6 +195,11 @@ const LoggedInView = (props) => {
             activeClassName={styles.navLinkActive}
           >
             <div className={styles.navLink}>
+              <img
+                src={props.currentUser.image || avatar}
+                className="user-pic"
+                alt={props.currentUser.username}
+              />
               <p className={styles.navLinkText} style={{ marginLeft: 0 }}>
                 {props.currentUser.username}
               </p>

@@ -1,32 +1,35 @@
-import ListErrors from './ListErrors';
-import React from 'react';
-import agent from '../agent';
-import { connect } from 'react-redux';
+import React from "react";
+import agent from "../agent";
+import styles from "./Settings.module.css";
+import { connect } from "react-redux";
 import {
   SETTINGS_SAVED,
   SETTINGS_PAGE_UNLOADED,
-  LOGOUT
-} from '../constants/actionTypes';
+  LOGOUT,
+} from "../constants/actionTypes";
+import eyeIconClosed from "../images/eyeIconClosed.svg";
+import eyeIconOpened from "../images/eyeIconOpened.svg";
 
 class SettingsForm extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      image: '',
-      username: '',
-      bio: '',
-      email: '',
-      password: ''
+      image: "",
+      username: "",
+      bio: "",
+      email: "",
+      password: "",
+      isEyeOpened: false,
     };
 
-    this.updateState = field => ev => {
+    this.updateState = (field) => (ev) => {
       const state = this.state;
       const newState = Object.assign({}, state, { [field]: ev.target.value });
       this.setState(newState);
     };
 
-    this.submitForm = ev => {
+    this.submitForm = (ev) => {
       ev.preventDefault();
 
       const user = Object.assign({}, this.state);
@@ -36,133 +39,185 @@ class SettingsForm extends React.Component {
 
       this.props.onSubmitForm(user);
     };
+
+    this.inputUserRef = React.createRef();
+    this.inputEmailRef = React.createRef();
   }
 
   componentWillMount() {
     if (this.props.currentUser) {
       Object.assign(this.state, {
-        image: this.props.currentUser.image || '',
+        image: this.props.currentUser.image || "",
         username: this.props.currentUser.username,
         bio: this.props.currentUser.bio,
-        email: this.props.currentUser.email
+        email: this.props.currentUser.email,
       });
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser) {
-      this.setState(Object.assign({}, this.state, {
-        image: nextProps.currentUser.image || '',
-        username: nextProps.currentUser.username,
-        bio: nextProps.currentUser.bio,
-        email: nextProps.currentUser.email
-      }));
+      this.setState(
+        Object.assign({}, this.state, {
+          image: nextProps.currentUser.image || "",
+          username: nextProps.currentUser.username,
+          bio: nextProps.currentUser.bio,
+          email: nextProps.currentUser.email,
+        })
+      );
     }
   }
 
+  handleImgClick = () => {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        isEyeOpened: !prevState.isEyeOpened,
+      };
+    });
+  };
+
   render() {
+    const errors = this.props.errors;
+
+    if (errors && errors.username === "is already taken.") {
+      this.inputUserRef.current.classList.add(styles.input_error);
+      this.inputUserRef.current.nextElementSibling.style.display =
+        "block";
+      this.inputUserRef.current.nextElementSibling.textContent =
+        "Пользователь с таким именем уже существует, укажите другое имя";
+    } else if (errors && errors.username === "is invalid") {
+      this.inputUserRef.current.classList.add(styles.input_error);
+      this.inputUserRef.current.nextElementSibling.style.display =
+        "block";
+      this.inputUserRef.current.nextElementSibling.textContent =
+        "Неверно указано имя";
+    }
+    if (errors && errors.email === "is invalid") {
+      this.inputEmailRef.current.classList.add(styles.input_error);
+      this.inputEmailRef.current.nextElementSibling.style.display =
+        "block";
+      this.inputEmailRef.current.nextElementSibling.textContent =
+        "Неверно указан email";
+    } else if (errors && errors.email === "is already taken.") {
+      this.inputEmailRef.current.classList.add(styles.input_error);
+      this.inputEmailRef.current.nextElementSibling.style.display =
+        "block";
+      this.inputEmailRef.current.nextElementSibling.textContent =
+        "Пользователь с таким email уже существует, укажите другой email";
+    }
     return (
-      <form onSubmit={this.submitForm}>
-        <fieldset>
-
-          <fieldset className="form-group">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="URL of profile picture"
-              value={this.state.image}
-              onChange={this.updateState('image')} />
-          </fieldset>
-
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="text"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.updateState('username')} />
-          </fieldset>
-
-          <fieldset className="form-group">
-            <textarea
-              className="form-control form-control-lg"
-              rows="8"
-              placeholder="Short bio about you"
-              value={this.state.bio}
-              onChange={this.updateState('bio')}>
-            </textarea>
-          </fieldset>
-
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.updateState('email')} />
-          </fieldset>
-
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="password"
-              placeholder="New Password"
-              value={this.state.password}
-              onChange={this.updateState('password')} />
-          </fieldset>
-
+      <form noValidate onSubmit={this.submitForm}>
+        <label htmlFor="url" className={styles.label}>
+          Изображение профиля
+        </label>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="URL изображения профиля"
+          value={this.state.image}
+          onChange={this.updateState("image")}
+          id="url"
+        />
+        <label htmlFor="username" className={styles.label}>
+          Имя пользователя
+        </label>
+        <input
+          ref={this.inputUserRef}
+          className={styles.input}
+          type="text"
+          placeholder="Username"
+          value={this.state.username}
+          onChange={this.updateState("username")}
+          id="username"
+        />
+        <span className={styles.error}>Error</span>
+        <label htmlFor="about" className={styles.label}>
+          Информация о вас
+        </label>
+        <textarea
+          className={styles.textarea}
+          placeholder="Информация о вас"
+          value={this.state.bio}
+          onChange={this.updateState("bio")}
+          id="about"
+        ></textarea>
+        <label htmlFor="email" className={styles.label}>
+          E-mail
+        </label>
+        <input
+          ref={this.inputEmailRef}
+          className={styles.input}
+          type="email"
+          placeholder="E-mail"
+          value={this.state.email}
+          onChange={this.updateState("email")}
+          id="email"
+        />
+        <span className={styles.error}>Error</span>
+        <label htmlFor="password" className={styles.label}>
+          Пароль
+        </label>
+        <div className={styles.passwordContainer}>
+          <img
+            className={styles.eye}
+            src={this.state.isEyeOpened ? eyeIconOpened : eyeIconClosed}
+            onClick={this.handleImgClick}
+          />
+          <input
+            className={styles.input}
+            type={`${this.state.isEyeOpened ? "text" : "password"}`}
+            placeholder="Пароль"
+            value={this.state.password}
+            onChange={this.updateState("password")}
+            id="password"
+          />
+        </div>
+        <div className={styles.buttonsContainer}>
           <button
-            className="btn btn-lg btn-primary pull-xs-right"
-            type="submit"
-            disabled={this.state.inProgress}>
-            Update Settings
+            type="button"
+            className={styles.exit}
+            onClick={this.props.onClickLogout}
+          >
+            <span className={styles.exit__text}>Выйти из аккаунта</span>
           </button>
-
-        </fieldset>
+          <button
+            className={styles.buttonSubmit}
+            type="submit"
+            disabled={this.state.inProgress}
+          >
+            Сохранить
+          </button>
+        </div>
       </form>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   ...state.settings,
-  currentUser: state.common.currentUser
+  currentUser: state.common.currentUser,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onClickLogout: () => dispatch({ type: LOGOUT }),
-  onSubmitForm: user =>
+  onSubmitForm: (user) =>
     dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
-  onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED })
+  onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED }),
 });
 
 class Settings extends React.Component {
   render() {
     return (
-      <div className="settings-page">
-        <div className="container page">
-          <div className="row">
-            <div className="col-md-6 offset-md-3 col-xs-12">
+      <div className={`${styles.settingsPage} settings-page`}>
+        <h1 className={`${styles.title} text-xs-center`}>Ваши настройки</h1>
 
-              <h1 className="text-xs-center">Your Settings</h1>
-
-              <ListErrors errors={this.props.errors}></ListErrors>
-
-              <SettingsForm
-                currentUser={this.props.currentUser}
-                onSubmitForm={this.props.onSubmitForm} />
-
-              <hr />
-
-              <button
-                className="btn btn-outline-danger"
-                onClick={this.props.onClickLogout}>
-                Or click here to logout.
-              </button>
-
-            </div>
-          </div>
-        </div>
+        <SettingsForm
+          errors={this.props.errors}
+          onClickLogout={this.props.onClickLogout}
+          currentUser={this.props.currentUser}
+          onSubmitForm={this.props.onSubmitForm}
+        />
       </div>
     );
   }
