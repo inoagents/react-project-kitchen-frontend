@@ -1,0 +1,146 @@
+.settingsPage {
+  background-color: #0a0a0a;
+  min-height: calc(100vh - 60px);
+  padding: 48px 0 40px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 28px;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.exit {
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+}
+
+.exit__text {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #ec2626;
+  transition: all 0.2s;
+}
+
+.exit:hover .exit__text {
+  opacity: 0.8;
+}
+
+.line {
+  display: block;
+  background: white;
+  width: 100%;
+  height: 1px;
+}
+
+.buttonSubmit {
+  display: block;
+  width: 117px;
+  height: 40px;
+  background: #ec4926;
+  border-radius: 20px;
+  padding: 0;
+  border: none;
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #0a0a0a;
+  transition: all 0.2s;
+}
+
+.buttonSubmit:hover {
+  opacity: 0.8;
+}
+
+.label {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fafafa;
+  margin-left: 16px;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+.input {
+  display: block;
+  min-height: 40px;
+  border: none;
+  background: #292929;
+  border-radius: 20px;
+  width: 100%;
+  padding: 0 16px;
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fafafa;
+  outline: none;
+}
+
+.input:focus {
+  border: 2px solid #ec4926;
+  padding: 0 14px;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fafafa;
+}
+
+.input_error.input:focus {
+  border: 2px solid #ec2626;
+}
+
+.textarea {
+  composes: input;
+  padding: 12px 16px;
+  min-height: 136px;
+}
+
+.textarea:focus {
+  padding: 12px 16px;
+}
+
+.passwordContainer {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eye:hover {
+  opacity: 0.8;
+}
+
+.error {
+  display: none;
+  margin: 4px 0 0 16px;
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ec2626;
+}
