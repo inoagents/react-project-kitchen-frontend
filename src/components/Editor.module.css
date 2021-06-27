@@ -1,0 +1,118 @@
+.editorHeading {
+  composes: subHeading from global;
+  text-align: center;
+  margin-top: calc(var(--offset-base-size) * 6);
+  margin-bottom: calc(var(--offset-base-size) * 4);
+}
+
+.editorMainFormGroup {
+  padding: 0;
+  margin-top: calc(var(--offset-base-size) * 10);
+  margin-bottom: calc(var(--offset-base-size) * 10);
+}
+
+.editorFormGroup {
+  padding: 0;
+  margin-bottom: calc(var(--offset-base-size) * 3);
+}
+
+.editorFormGroup:last-of-type {
+  margin-bottom: 0;
+}
+
+.editorFormLabel {
+  margin-left: calc(var(--offset-base-size) * 4);
+  margin-bottom: calc(var(--offset-base-size) * 1);
+}
+
+.editorFormInput {
+  display: block;
+  min-height: calc(var(--offset-base-size)*10);
+  border: none;
+  background: var(--background-element);
+  border-radius: var(--common-border-radius);
+  width: 100%;
+  padding: 0 calc(var(--offset-base-size)*4);
+  composes: text from global;
+  outline: none;
+}
+
+.editorFormInput:focus {
+  border: 2px solid var(--colors-interface-accent);
+  padding: 0 14px;
+}
+
+.editorFormInput::placeholder {
+  color: var(--text-inactive-color);
+}
+
+.editorFormInput:-webkit-autofill,
+.editorFormInput:-webkit-autofill:hover,
+.editorFormInput:-webkit-autofill:focus,
+.editorFormInput:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--text-primary-color);
+}
+
+textarea.editorFormInput {
+  padding: calc(var(--offset-base-size) * 2) calc(var(--offset-base-size) * 4);
+}
+
+textarea.editorFormInput:focus {
+  padding: calc((var(--offset-base-size) * 2) - 2px) calc((var(--offset-base-size) * 4) - 2px);
+}
+
+.editorFormImageInput {
+  composes: editorFormInput;
+  color: var(--text-inactive-color);
+  padding: calc(var(--offset-base-size) * 2) calc(var(--offset-base-size) * 4);
+  margin-top: calc(var(--offset-base-size) * 1);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.editorFormImageIcon {
+  float: right;
+}
+
+.editorTagsCloseIcon {
+  margin-right: 4px;
+  font-size: 11px;
+}
+
+.editorFormButtonGroup {
+  padding: 0;
+  margin-bottom: calc(var(--offset-base-size) * 10);
+  text-align: right;
+}
+
+.button {
+  composes: button from global;
+  border: none;
+}
+
+.disabled {
+  composes: button_disabled from global;
+}
+
+/* Tag Links classes are imported from global CSS */
+
+.tagsList {
+  composes: tagsList from global;
+  justify-content: flex-start;
+  margin-top: calc(var(--offset-base-size) * 4);
+}
+
+.tagItem {
+  composes: tagItem from global;
+  background-color: var(--text-primary-color);
+  color: var(--text-secondary-color)
+}
+
+.tagItem:hover,
+.tagItem:active,
+.tagItem:focus {
+  background: var(--colors-interface-accent);
+  color: var(--text-primary-color);
+  border-color: var(--colors-interface-accent);
+}
