@@ -130,14 +130,16 @@ h4 {
 :global .button:focus {
   background: var(--colors-interface-hover);
   color: var(--text-secondary-color);
+  outline: none;
 }
 
 :global .button:active {
   background: var(--colors-interface-active);
   color: var(--text-secondary-color);
+  outline: none;
 }
 
-:global .button:disabled {
+:global .button_disabled {
   background: var(--colors-interface-disabled);
   color: var(--text-inactive-color);
 }
@@ -205,4 +207,47 @@ h4 {
   box-shadow: var(--common-box-shadow);
   padding: calc(var(--offset-base-size) * 8);
   margin-bottom: calc(var(--offset-base-size) * 8);
+}
+
+/* Tags links */
+
+:global .tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--offset-base-size);
+}
+
+:global .tagItem {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-primary-color);
+  background-color: transparent;
+  display: inline-block;
+  padding: var(--offset-base-size) calc(var(--offset-base-size) * 2);
+  white-space: nowrap;
+  border-radius: 100px;
+  border: 1px solid var(--text-primary-color);
+  box-sizing: border-box;
+
+  /* limit tag display size */
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:global .tagItem:hover,
+:global .tagItem:active,
+:global .tagItem:focus {
+  background: var(--text-primary-color);
+  color: var(--background);
+  text-decoration: none;
+}
+
+:global .tagItem.tagItemInactive {
+  color: var(--text-primary-color);
+  background-color: transparent;
 }

@@ -1,7 +1,9 @@
-import ListErrors from './ListErrors';
-import React from 'react';
-import agent from '../agent';
-import { connect } from 'react-redux';
+import ListErrors from "./ListErrors";
+import React from "react";
+import agent from "../agent";
+import styles from "./Editor.module.css";
+import paperClipIcon from '../images/paperClip.svg';
+import { connect } from "react-redux";
 import {
   ADD_TAG,
   EDITOR_PAGE_LOADED,
@@ -9,7 +11,7 @@ import {
   ARTICLE_SUBMITTED,
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const mapStateToProps = state => ({
   ...state.editor
@@ -34,12 +36,15 @@ class Editor extends React.Component {
   constructor() {
     super();
 
+    const isLoaded = false;
+
     const updateFieldEvent =
       key => ev => this.props.onUpdateField(key, ev.target.value);
-    this.changeTitle = updateFieldEvent('title');
-    this.changeDescription = updateFieldEvent('description');
-    this.changeBody = updateFieldEvent('body');
-    this.changeTagInput = updateFieldEvent('tagInput');
+    this.changeTitle = updateFieldEvent("title");
+    this.changeDescription = updateFieldEvent("description");
+    this.changeImage = updateFieldEvent("image");
+    this.changeBody = updateFieldEvent("body");
+    this.changeTagInput = updateFieldEvent("tagInput");
 
     this.watchForEnter = ev => {
       if (ev.keyCode === 13) {
@@ -57,6 +62,7 @@ class Editor extends React.Component {
       const article = {
         title: this.props.title,
         description: this.props.description,
+        image: this.props.image,
         body: this.props.body,
         tagList: this.props.tagList
       };
@@ -78,6 +84,7 @@ class Editor extends React.Component {
       }
       this.props.onLoad(null);
     }
+    this.isLoaded = true;
   }
 
   componentWillMount() {
@@ -96,78 +103,149 @@ class Editor extends React.Component {
       <div className="editor-page">
         <div className="container page">
           <div className="row">
-            <div className="col-md-10 offset-md-1 col-xs-12">
+
+          {this.isLoaded && (
+
+            <div className="col-md-6 offset-md-3 col-xs-12">
+              <h2 className={styles.editorHeading}>
+                {this.props.articleSlug ? (
+                  "Редактирование записи"
+                ) : (
+                  "Новая запись"
+                )}
+              </h2>
 
               <ListErrors errors={this.props.errors}></ListErrors>
 
-              <form>
-                <fieldset>
+              <form className={styles.editorForm}>
+                <fieldset className={styles.editorMainFormGroup}>
 
-                  <fieldset className="form-group">
+                  <fieldset className={styles.editorFormGroup}>
+                  <label
+                    className={styles.editorFormLabel}
+                    for="article-title"
+                  >
+                    Заголовок
+                  </label>
                     <input
-                      className="form-control form-control-lg"
+                      id="article-title"
+                      className={styles.editorFormInput}
                       type="text"
-                      placeholder="Article Title"
+                      placeholder="Название статьи"
                       value={this.props.title}
                       onChange={this.changeTitle} />
                   </fieldset>
 
-                  <fieldset className="form-group">
+                  <fieldset className={styles.editorFormGroup}>
+                  <label
+                    className={styles.editorFormLabel}
+                    for="article-description"
+                  >
+                    Описание
+                  </label>
                     <input
-                      className="form-control"
+                      id="article-description"
+                      className={styles.editorFormInput}
                       type="text"
-                      placeholder="What's this article about?"
+                      placeholder="О чем статья"
                       value={this.props.description}
                       onChange={this.changeDescription} />
                   </fieldset>
 
-                  <fieldset className="form-group">
+                  {/* TODO: implement image field in form */}
+                  <fieldset className={styles.editorFormGroup}>
+                  <span className={styles.editorFormLabel}>
+                    Изображение
+                  </span>
+                  <label
+                    className={styles.editorFormImageInput}
+                    for="article-image"
+                  >
+                    Изображение (опционально)
+                    <img
+                      src={paperClipIcon}
+                      className={styles.editorFormImageIcon}
+                      alt="Прикрепить изображение"
+                    />
+                    <input
+                      id="article-image"
+                      style={{display: 'none'}}
+                      type="file"
+                      placeholder="Изображение (опционально)"
+                      value={this.props.image}
+                      onChange={this.changeImage} />
+                    </label>
+                  </fieldset>
+
+                  <fieldset className={styles.editorFormGroup}>
+                  <label
+                    className={styles.editorFormLabel}
+                    for="article-body"
+                  >
+                    Содержание
+                  </label>
                     <textarea
-                      className="form-control"
+                      id="article-body"
+                      className={styles.editorFormInput}
                       rows="8"
-                      placeholder="Write your article (in markdown)"
+                      placeholder="Текст статьи"
                       value={this.props.body}
                       onChange={this.changeBody}>
                     </textarea>
                   </fieldset>
 
-                  <fieldset className="form-group">
+                  <fieldset className={styles.editorFormGroup}>
+                  <label
+                    className={styles.editorFormLabel}
+                    for="article-tags"
+                  >
+                    Теги
+                  </label>
                     <input
-                      className="form-control"
+                      id="article-tags"
+                      className={styles.editorFormInput}
                       type="text"
-                      placeholder="Enter tags"
+                      placeholder="Введите теги (нажмите Enter для сохранения тега)"
                       value={this.props.tagInput}
+                      // TODO: remove tags apply with Enter - split value by "," and save tags array
                       onChange={this.changeTagInput}
                       onKeyUp={this.watchForEnter} />
 
-                    <div className="tag-list">
+                  </fieldset>
+                    <div className={styles.tagsList}>
                       {
                         (this.props.tagList || []).map(tag => {
                           return (
-                            <span className="tag-default tag-pill" key={tag}>
-                              <i  className="ion-close-round"
-                                  onClick={this.removeTagHandler(tag)}>
-                              </i>
-                              {tag}
-                            </span>
+                              <span className={styles.tagItem} key={tag}>
+                                <i className={"ion-close-round " + styles.editorTagsCloseIcon}
+                                    onClick={this.removeTagHandler(tag)}>
+                                </i>
+                                {tag}
+                              </span>
                           );
                         })
                       }
                     </div>
-                  </fieldset>
+                </fieldset>
 
+                <fieldset className={styles.editorFormButtonGroup}>
                   <button
-                    className="btn btn-lg pull-xs-right btn-primary"
+                    className={
+                      `${styles.button}
+                      ${this.props.inProgress ? styles.disabled : null}`
+                    }
                     type="button"
                     disabled={this.props.inProgress}
                     onClick={this.submitForm}>
-                    Publish Article
+                    Опубликовать
                   </button>
-
                 </fieldset>
               </form>
 
             </div>
+
+            )}
+
           </div>
         </div>
       </div>
