@@ -86,7 +86,7 @@ class Editor extends React.Component {
     }
     this.isLoaded = true;
   }
-  
+
   componentWillMount() {
     if (this.props.match.params.slug) {
       return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
@@ -108,7 +108,6 @@ class Editor extends React.Component {
 
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h2 className={styles.editorHeading}>
-                
                 {this.props.articleSlug ? (
                   "Редактирование записи"
                 ) : (
@@ -122,7 +121,7 @@ class Editor extends React.Component {
                 <fieldset className={styles.editorMainFormGroup}>
 
                   <fieldset className={styles.editorFormGroup}>
-                  <label 
+                  <label
                     className={styles.editorFormLabel}
                     for="article-title"
                   >
@@ -138,7 +137,7 @@ class Editor extends React.Component {
                   </fieldset>
 
                   <fieldset className={styles.editorFormGroup}>
-                  <label 
+                  <label
                     className={styles.editorFormLabel}
                     for="article-description"
                   >
@@ -167,7 +166,7 @@ class Editor extends React.Component {
                       src={paperClipIcon}
                       className={styles.editorFormImageIcon}
                       alt="Прикрепить изображение"
-                    /> 
+                    />
                     <input
                       id="article-image"
                       style={{display: 'none'}}
@@ -179,7 +178,7 @@ class Editor extends React.Component {
                   </fieldset>
 
                   <fieldset className={styles.editorFormGroup}>
-                  <label 
+                  <label
                     className={styles.editorFormLabel}
                     for="article-body"
                   >
@@ -196,7 +195,7 @@ class Editor extends React.Component {
                   </fieldset>
 
                   <fieldset className={styles.editorFormGroup}>
-                  <label 
+                  <label
                     className={styles.editorFormLabel}
                     for="article-tags"
                   >

@@ -27,12 +27,12 @@
 
 .editorFormInput {
   display: block;
-  min-height: calc(var(--offset-base-size)*10);
+  min-height: calc(var(--offset-base-size) * 10);
   border: none;
   background: var(--background-element);
   border-radius: var(--common-border-radius);
   width: 100%;
-  padding: 0 calc(var(--offset-base-size)*4);
+  padding: 0 calc(var(--offset-base-size) * 4);
   composes: text from global;
   outline: none;
 }
@@ -106,7 +106,7 @@ textarea.editorFormInput:focus {
 .tagItem {
   composes: tagItem from global;
   background-color: var(--text-primary-color);
-  color: var(--text-secondary-color)
+  color: var(--text-secondary-color);
 }
 
 .tagItem:hover,
