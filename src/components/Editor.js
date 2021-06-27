@@ -114,7 +114,7 @@ class Editor extends React.Component {
                   "Новая запись"
                 )}
               </h2>
-            
+
               <ListErrors errors={this.props.errors}></ListErrors>
 
               <form className={styles.editorForm}>
