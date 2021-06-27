@@ -9,38 +9,9 @@
 }
 
 .tagsList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: var(--offset-base-size);
+  composes: tagsList from global;
 }
 
 .tagItem {
-  composes: caption from global;
-  color: var(--text-primary-color);
-  background-color: transparent;
-  display: inline-block;
-  padding: var(--offset-base-size) calc(var(--offset-base-size) * 2);
-  white-space: nowrap;
-  border-radius: 100px;
-  border: 1px solid var(--text-primary-color);
-  box-sizing: border-box;
-
-  /* limit tag display size */
-  max-width: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.tagItem:hover,
-.tagItem:active,
-.tagItem:focus {
-  background: var(--text-primary-color);
-  color: var(--background);
-  text-decoration: none;
-}
-
-.tagItem.tagItemInactive {
-  color: var(--text-primary-color);
-  background-color: transparent;
+  composes: tagItem from global;
 }
