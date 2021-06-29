@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import avatar from "../images/avatar.svg";
+import alien from "../images/alien.svg";
 
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
@@ -196,7 +196,7 @@ const LoggedInView = (props) => {
           >
             <div className={styles.navLink}>
               <img
-                src={props.currentUser.image || avatar}
+                src={props.currentUser.image || alien}
                 className="user-pic"
                 alt={props.currentUser.username}
               />
