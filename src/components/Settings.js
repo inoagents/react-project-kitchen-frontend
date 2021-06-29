@@ -80,32 +80,49 @@ class SettingsForm extends React.Component {
   render() {
     const errors = this.props.errors;
 
+    if (errors) {
+      this.inputUserRef.current.classList.remove(styles.input_error);
+      this.inputUserRef.current.nextElementSibling.style.display = "none";
+      this.inputUserRef.current.nextElementSibling.textContent = "";
+      this.inputEmailRef.current.classList.remove(styles.input_error);
+      this.inputEmailRef.current.nextElementSibling.style.display = "none";
+      this.inputEmailRef.current.nextElementSibling.textContent = "";
+    }
+
     if (errors && errors.username === "is already taken.") {
       this.inputUserRef.current.classList.add(styles.input_error);
-      this.inputUserRef.current.nextElementSibling.style.display =
-        "block";
+      this.inputUserRef.current.nextElementSibling.style.display = "block";
       this.inputUserRef.current.nextElementSibling.textContent =
         "Пользователь с таким именем уже существует, укажите другое имя";
     } else if (errors && errors.username === "is invalid") {
       this.inputUserRef.current.classList.add(styles.input_error);
-      this.inputUserRef.current.nextElementSibling.style.display =
-        "block";
+      this.inputUserRef.current.nextElementSibling.style.display = "block";
       this.inputUserRef.current.nextElementSibling.textContent =
         "Неверно указано имя";
+    } else if (errors && errors.username === "can't be blank") {
+      this.inputUserRef.current.classList.add(styles.input_error);
+      this.inputUserRef.current.nextElementSibling.style.display = "block";
+      this.inputUserRef.current.nextElementSibling.textContent =
+        "Заполните это поле";
     }
+
     if (errors && errors.email === "is invalid") {
       this.inputEmailRef.current.classList.add(styles.input_error);
-      this.inputEmailRef.current.nextElementSibling.style.display =
-        "block";
+      this.inputEmailRef.current.nextElementSibling.style.display = "block";
       this.inputEmailRef.current.nextElementSibling.textContent =
         "Неверно указан email";
     } else if (errors && errors.email === "is already taken.") {
       this.inputEmailRef.current.classList.add(styles.input_error);
-      this.inputEmailRef.current.nextElementSibling.style.display =
-        "block";
+      this.inputEmailRef.current.nextElementSibling.style.display = "block";
       this.inputEmailRef.current.nextElementSibling.textContent =
         "Пользователь с таким email уже существует, укажите другой email";
+    } else if (errors && errors.email === "can't be blank") {
+      this.inputEmailRef.current.classList.add(styles.input_error);
+      this.inputEmailRef.current.nextElementSibling.style.display = "block";
+      this.inputEmailRef.current.nextElementSibling.textContent =
+        "Заполните это поле";
     }
+
     return (
       <form noValidate onSubmit={this.submitForm}>
         <label htmlFor="url" className={styles.label}>
