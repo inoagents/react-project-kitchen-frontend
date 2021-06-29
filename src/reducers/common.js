@@ -17,8 +17,8 @@ import {
 } from '../constants/actionTypes';
 
 const defaultState = {
-  appName: "Проектная кухня",
-  appTagline: "Место, где готовится новый опыт",
+  appName: "Инопланетные агенты",
+  appTagline: "Межгалактическое оппозиционное СМИ",
   token: null,
   viewChangeCounter: 0,
 };
