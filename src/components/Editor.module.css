@@ -65,14 +65,18 @@ textarea.editorFormInput:focus {
 .editorFormImageInput {
   composes: editorFormInput;
   color: var(--text-inactive-color);
-  padding: calc(var(--offset-base-size) * 2) calc(var(--offset-base-size) * 4);
+  padding: calc(var(--offset-base-size) * 2) 56px calc(var(--offset-base-size) * 2) calc(var(--offset-base-size) * 4);
   margin-top: calc(var(--offset-base-size) * 1);
   margin-bottom: 0;
   cursor: pointer;
+  position: relative;
 }
 
 .editorFormImageIcon {
-  float: right;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
 }
 
 .editorTagsCloseIcon {
