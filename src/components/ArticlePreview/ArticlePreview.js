@@ -68,7 +68,7 @@ function ArticlePreview({ article, favorite, unfavorite }) {
           </Link>
           <div className={styles.ReadMoreAndTags}>
             <Link to={`/article/${article.slug}`} className={styles.ReadMore_Link}>
-              <span className={styles.ReadMore}>Read more...</span>
+              <span className={styles.ReadMore}>Читать дальше</span>
             </Link>
             <TagList tagList={article.tagList} className={styles.TagList} onClick={console.log}/>
           </div>

@@ -13,7 +13,7 @@ const ArticleList = ({ articles, pager, articlesCount, currentPage }) => {
   if (articles.length === 0) {
     return (
       <div className={styles.articlePreview}>
-        No articles are here... yet.
+        Здесь пусто... пока что.
       </div>
     );
   }
