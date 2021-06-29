@@ -108,6 +108,7 @@
 .ArticleContent_Content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .ArticleContent_Preview > p {
