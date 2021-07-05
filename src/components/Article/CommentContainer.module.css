@@ -1,0 +1,15 @@
+.commentContainer {
+  width: 100%;
+}
+
+.commentContainer > .commentContainerItem {
+  width: 100%;
+}
+
+.commentContainer > .commentContainerItem > :global(.link) {
+  color: var(--colors-interface-hover);
+}
+
+.commentContainer > .commentContainerItem > :global(.link):active {
+  color: var(--colors-interface-active);
+}

@@ -76,7 +76,7 @@ function Article({ onLoad, onUnload, article, currentUser, match, comments, comm
 
         <hr />
 
-        <div className="row">
+        <div className={`flex_row ${styles.commentsContainer}`}>
           <CommentContainer
             comments={comments || []}
             errors={commentErrors}

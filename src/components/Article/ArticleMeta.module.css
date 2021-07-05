@@ -27,6 +27,10 @@
   color: #fafafa;
 }
 
+:global(.link).info_Author {
+  text-decoration: none;
+}
+
 .info_Date {
   font-size: 12px;
   line-height: 16px;

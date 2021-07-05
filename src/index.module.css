@@ -121,6 +121,8 @@ h4 {
 
 :global .button {
   padding: 8px 16px;
+  outline: none;
+  border: none;
   color: var(--text-secondary-color);
   background: var(--colors-interface-accent);
   border-radius: var(--common-border-radius);

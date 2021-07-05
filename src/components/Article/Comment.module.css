@@ -1,0 +1,42 @@
+.comment {
+  display: block;
+  margin-bottom: 32px;
+  border: 1px solid #292929;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.commentBlock {
+  padding: 24px;
+}
+
+.commentText:last-child {
+  margin-bottom: 0;
+}
+
+.commentFooter {
+  padding: 24px;
+  display: flex;
+}
+
+.commentFooter:last-child {
+  padding-top: 0;
+  border-bottom-right-radius: var(--common-border-radius-s);
+  border-bottom-left-radius: var(--common-border-radius-s);
+}
+
+.commentAuthor {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.commentAuthor > img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.commentActions {
+  margin-left: auto;
+}

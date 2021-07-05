@@ -3,7 +3,7 @@ import React from 'react';
 
 const CommentList = props => {
   return (
-    <div>
+    <div className={props.className}>
       {
         props.comments.map(comment => {
           return (
