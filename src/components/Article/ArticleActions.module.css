@@ -1,0 +1,43 @@
+.articleActions {
+  font-family: "Golos", Arial, Helvetica, sans-serif;
+}
+
+.button {
+  -webkit-appearance: button;
+  display: inline-block;
+  text-align: center;
+  padding: 8px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 20px;
+}
+
+.button + .button {
+  margin-left: 8px;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  background-color: #292929;
+}
+
+.buttonPrimary {
+  background: #ec4926;
+  color: #0a0a0a;
+}
+
+a.buttonPrimary:hover {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+.buttonPrimary:hover {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #ec4926;
+}

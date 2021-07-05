@@ -13,13 +13,13 @@
         }
       ],
     "selector-pseudo-class-no-unknown": [true, {
-      ignorePseudoClasses: ["global"]
+      "ignorePseudoClasses": ["global"]
     }],
     "property-no-unknown": [true, {
-      ignoreProperties: ["composes"]
+      "ignoreProperties": ["composes"]
     }],
-    "value-keyword-case": ['lower', {
-      ignoreProperties: ["composes"]
-    }],
+    "value-keyword-case": ["lower", {
+      "ignoreProperties": ["composes"]
+    }]
   }
 }

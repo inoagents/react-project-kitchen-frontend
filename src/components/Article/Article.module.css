@@ -1,0 +1,22 @@
+.banner {
+  background: #0a0a0a;
+  box-shadow: inset 0 -1px 0 #212531;
+  margin-bottom: 2rem;
+}
+
+.articlePage .banner {
+  padding: 2rem 0;
+}
+
+.articleContent {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.commentsContainer {
+  margin: 0 16%;
+}

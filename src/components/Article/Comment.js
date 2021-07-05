@@ -1,32 +1,23 @@
 import DeleteButton from './DeleteButton';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import styles from './Comment.module.css';
+import ArticleMetaUserInfo from './ArticleMetaUserInfo.js';
 
 const Comment = props => {
   const comment = props.comment;
   const show = props.currentUser &&
     props.currentUser.username === comment.author.username;
   return (
-    <div className="card">
-      <div className="card-block">
-        <p className="card-text">{comment.body}</p>
+    <div className={styles.comment}>
+      <div className={styles.commentBlock}>
+        <p className={styles.commentText}>{comment.body}</p>
       </div>
-      <div className="card-footer">
-        <Link
-          to={`/@${comment.author.username}`}
-          className="comment-author">
-          <img src={comment.author.image} className="comment-author-img" alt={comment.author.username} />
-        </Link>
-        &nbsp;
-        <Link
-          to={`/@${comment.author.username}`}
-          className="comment-author">
-          {comment.author.username}
-        </Link>
-        <span className="date-posted">
-          {new Date(comment.createdAt).toDateString()}
-        </span>
-        <DeleteButton show={show} slug={props.slug} commentId={comment.id} />
+      <div className={`${styles.commentFooter} flex_row`}>
+        <ArticleMetaUserInfo username={comment.author.username} image={comment.author.image} createdAt={comment.createdAt} />
+
+        <div className={styles.commentActions}>
+          <DeleteButton show={show} slug={props.slug} commentId={comment.id} />
+        </div>
       </div>
     </div>
   );

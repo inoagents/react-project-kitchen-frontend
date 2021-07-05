@@ -2,6 +2,8 @@ import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { DELETE_COMMENT } from '../../constants/actionTypes';
+import deleteButton from '../../images/delete.svg';
+import styles from './DeleteButton.module.css';
 
 const mapDispatchToProps = dispatch => ({
   onClick: (payload, commentId) =>
@@ -16,8 +18,8 @@ const DeleteButton = props => {
 
   if (props.show) {
     return (
-      <span className="mod-options">
-        <i className="ion-trash-a" onClick={del}></i>
+      <span className={styles.deleteButton}>
+        <img width={24} height={24} src={deleteButton} onClick={del} alt="Delete comment"/>
       </span>
     );
   }

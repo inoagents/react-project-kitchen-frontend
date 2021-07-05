@@ -1,0 +1,42 @@
+.commentInput {
+  display: block;
+  margin-bottom: 32px;
+  border: 1px solid var(--background-element);
+  background-color: var(--background-element);
+  box-sizing: border-box;
+  border-radius: var(--common-border-radius-s);
+}
+
+.inputBlock {
+  padding: 24px 24px 0 24px;
+}
+
+.textArea {
+  background: var(--background-element);
+  color: var(--text-inactive-color);
+  width: 100%;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+  background-clip: padding-box;
+  border: none;
+}
+
+.textArea:focus-visible {
+  outline: none;
+}
+
+.inputFooter {
+  padding: 24px;
+  background-color: var(--background);
+  display: flex;
+}
+
+.commentInput .inputFooter {
+  border-bottom-left-radius: var(--common-border-radius-s);
+  border-bottom-right-radius: var(--common-border-radius-s);
+}
+
+.inputFooter > .submitCommentButton {
+  margin-left: auto;
+}

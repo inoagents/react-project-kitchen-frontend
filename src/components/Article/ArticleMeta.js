@@ -1,25 +1,16 @@
 import ArticleActions from './ArticleActions';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import styles from './ArticleMeta.module.css';
+import ArticleMetaUserInfo from './ArticleMetaUserInfo.js';
 
 const ArticleMeta = props => {
   const article = props.article;
   return (
-    <div className="article-meta">
-      <Link to={`/@${article.author.username}`}>
-        <img src={article.author.image} alt={article.author.username} />
-      </Link>
+    <div className={styles.articleMeta}>
+      <ArticleMetaUserInfo username={article.author.username} image={article.author.image} createdAt={article.createdAt} />
 
-      <div className="info">
-        <Link to={`/@${article.author.username}`} className="author">
-          {article.author.username}
-        </Link>
-        <span className="date">
-          {new Date(article.createdAt).toDateString()}
-        </span>
-      </div>
-
-      <ArticleActions canModify={props.canModify} article={article} />
+      <ArticleActions className={styles.articleMeta_Actions} canModify={props.canModify} article={article} />
     </div>
   );
 };
