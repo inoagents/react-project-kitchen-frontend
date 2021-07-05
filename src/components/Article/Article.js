@@ -55,23 +55,21 @@ function Article({ onLoad, onUnload, article, currentUser, match, comments, comm
       </div>
       <div className="container page">
         <h1>{article.title}</h1>
-        <div className={`row ${styles.articleContent}`}>
-          <div className="col-xs-12">
-            <div dangerouslySetInnerHTML={markup} />
-            <ul className="tag-list">
-              {
-                article.tagList.map(tag => {
-                  return (
-                    <li
-                      className="tag-default tag-pill tag-outline"
-                      key={tag}>
-                      {tag}
-                    </li>
-                  );
-                })
-              }
-            </ul>
-          </div>
+        <div className={`${styles.articleContent}`}>
+          <div dangerouslySetInnerHTML={markup} />
+          <ul className="tag-list">
+            {
+              article.tagList.map(tag => {
+                return (
+                  <li
+                    className="tag-default tag-pill tag-outline"
+                    key={tag}>
+                    {tag}
+                  </li>
+                );
+              })
+            }
+          </ul>
         </div>
 
         <hr />

@@ -12,6 +12,9 @@
   font-size: 1.2rem;
   line-height: 1.8rem;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 .commentsContainer {
