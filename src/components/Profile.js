@@ -57,7 +57,6 @@ const FollowUserButton = props => {
 
   const handleClick = ev => {
     ev.preventDefault();
-    // FIXME: Follow doesn't work, unfollow throwed error (slug don't defined)
     if (props.user.following) {
       props.unfollow(props.user.username)
     } else {
@@ -134,7 +133,6 @@ const YourFeedTab = props => {
 const LikedFeedTab = props => {
   const clickHandler = ev => {
     ev.preventDefault();
-    // TODO: Check this code when article liking will be fixed
     props.onTabClick('liked', agent.Articles.all, agent.Articles.favoritedBy(props.username));
   };
   return (
@@ -187,7 +185,11 @@ class Profile extends React.Component {
           username={this.props.match.params.username}
         />
 
-        <LikedFeedTab tab={this.props.tab} onTabClick={this.props.onTabClick} />
+        <LikedFeedTab
+          tab={this.props.tab}
+          onTabClick={this.props.onTabClick}
+          username={this.props.match.params.username}
+        />
 
         <TagFilterTab tag={this.props.tag} tab={this.props.tab} onTabClick={this.props.onTabClick} />
       </ul>
