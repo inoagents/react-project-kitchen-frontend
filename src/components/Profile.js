@@ -248,7 +248,6 @@ class Profile extends React.Component {
 
             <Tags
               tags={this.props.tags}
-              // TODO: Implement feed filtering by tag (now it's all articles by tag)
               onClickTag={this.props.onClickTag}
             />
 
