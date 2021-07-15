@@ -9,14 +9,17 @@ const Tags = props => {
       <div className="col-md-3">
         <div className={styles.tagsSidebar}>
 
-          <p>Популярные теги</p>
+          <p>Популярные теги{!!props.author ? ' автора' : ''}</p>
 
           <div className={styles.tagsList}>
             {
               tags.map(tag => {
                 const handleClick = ev => {
                   ev.preventDefault();
-                  props.onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
+                  if (!!props.author)
+                    props.onClickTag(tag, page => agent.Articles.byAuthorAndTag(props.author, tag, page), agent.Articles.byAuthorAndTag(props.author, tag));
+                  else
+                    props.onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
                 };
 
                 return (

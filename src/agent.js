@@ -3,7 +3,8 @@ import _superagent from "superagent";
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = "https://24articles.ru/api";
+const API_ROOT = "http://localhost:3000/api";
+// const API_ROOT = "https://24articles.ru/api";
 
 const createArticleImageSrcString = (formElement) => {
   return fetch(`${API_ROOT}/image`, {
@@ -68,6 +69,8 @@ const Articles = {
     requests.get(`/articles?author=${encode(author)}&${limit(5, page)}`),
   byTag: (tag, page) =>
     requests.get(`/articles?tag=${encode(tag)}&${limit(10, page)}`),
+  byAuthorAndTag: (author, tag, page) =>
+    requests.get(`/articles?author=${encode(author)}&tag=${encode(tag)}&${limit(10, page)}`),
   del: (slug) => requests.del(`/articles/${slug}`),
   favorite: (slug) => requests.post(`/articles/${slug}/favorite`),
   favoritedBy: (author, page) =>
@@ -91,6 +94,7 @@ const Comments = {
 const Profile = {
   follow: (username) => requests.post(`/profiles/${username}/follow`),
   get: (username) => requests.get(`/profiles/${username}`),
+  getTags: (username) => requests.get(`/profiles/${username}/tags`),
   unfollow: (username) => requests.del(`/profiles/${username}/follow`),
 };
 

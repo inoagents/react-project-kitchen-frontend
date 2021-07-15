@@ -168,7 +168,7 @@ class Profile extends React.Component {
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
       agent.Articles.byAuthor(this.props.match.params.username),
-      agent.Tags.getAll()
+      agent.Profile.getTags(this.props.match.params.username)
     ]));
   }
 
@@ -191,7 +191,11 @@ class Profile extends React.Component {
           username={this.props.match.params.username}
         />
 
-        <TagFilterTab tag={this.props.tag} tab={this.props.tab} onTabClick={this.props.onTabClick} />
+        <TagFilterTab
+          tag={this.props.tag}
+          tab={this.props.tab}
+          onTabClick={this.props.onTabClick}
+        />
       </ul>
     );
   }
@@ -248,6 +252,7 @@ class Profile extends React.Component {
 
             <Tags
               tags={this.props.tags}
+              author={this.props.currentUser.username}
               onClickTag={this.props.onClickTag}
             />
 
