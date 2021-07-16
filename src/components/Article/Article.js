@@ -19,7 +19,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: ARTICLE_PAGE_UNLOADED })
 });
 
-function Article({ onLoad, onUnload, article, currentUser, match, comments, commentErrors }) {
+function Article({
+  onLoad,
+  onUnload,
+  article,
+  currentUser,
+  match,
+  comments,
+  commentErrors
+}) {
   useEffect(() => {
     onLoad(Promise.all([
       agent.Articles.get(match.params.id),
@@ -44,6 +52,8 @@ function Article({ onLoad, onUnload, article, currentUser, match, comments, comm
   if (!article) {
     return null;
   }
+
+  const { title, image, tagList } = article;
   return (
     <div className={styles.articlePage}>
       <div className={styles.banner}>
@@ -54,12 +64,23 @@ function Article({ onLoad, onUnload, article, currentUser, match, comments, comm
         </div>
       </div>
       <div className="container page">
-        <h1>{article.title}</h1>
-        <div className={`${styles.articleContent}`}>
+        <h1>{title}</h1>
+        <div
+          className={ styles.imageContainer }
+          style={ { backgroundImage: `url(${ image })` } }
+        >
+          <picture className={styles.picture}>
+            <img
+              src={ image }
+              alt={ title }
+              className={ styles.articleImage } />
+          </picture>
+        </div>
+        <div className={styles.articleContent}>
           <div dangerouslySetInnerHTML={markup} />
           <ul className="tag-list">
             {
-              article.tagList.map(tag => {
+              tagList.map(tag => {
                 return (
                   <li
                     className="tag-default tag-pill tag-outline"
