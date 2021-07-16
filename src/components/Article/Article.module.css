@@ -25,7 +25,9 @@
   bottom: 0;
   left: 0;
   background-image: inherit;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   filter: blur(26px);
 }
 
