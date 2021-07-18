@@ -1,20 +1,22 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import agent from "../../agent";
+
 import {
   ARTICLE_FAVORITED,
   ARTICLE_UNFAVORITED,
 } from "../../constants/actionTypes";
+import agent from "../../agent";
+
 import TagList from "../TagList";
+
 import like from "../../images/like.svg";
 import unlike from "../../images/unlike.svg";
+
 import styles from "./ArticlePreview.module.css";
 
-const FAVORITED_CLASS = `${styles.Button} ${styles.ButtonLiked}`;
-const NOT_FAVORITED_CLASS = styles.Button;
-
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = ( dispatch ) => ( {
+  // todo переписать на одной действие - LIKE_TOGGLE
   favorite: (slug) =>
     dispatch({
       type: ARTICLE_FAVORITED,
@@ -28,79 +30,83 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 function ArticlePreview({ article, favorite, unfavorite }) {
-  const favoriteButtonClass = article.favorited
-    ? FAVORITED_CLASS
-    : NOT_FAVORITED_CLASS;
-  const likeImage = article.favorited ? unlike : like;
-  const handleClick = useCallback(
+  const likeBtnClickHandler = useCallback(
     (ev) => {
       ev.preventDefault();
-      if (article.favorited) {
-        unfavorite(article.slug);
-      } else {
-        favorite(article.slug);
-      }
+      article.favorited ?
+        unfavorite( article.slug ) :
+        favorite( article.slug );
     },
     [article, favorite, unfavorite]
   );
+
+  const likeBtnClassName = article.favorited ?
+    `${ styles.likeBtn } ${ styles.likeBtnActive }` :
+    styles.likeBtn;
+
+  const likeBtnIconSrc = article.favorited ? unlike : like;
+
   return (
-    <div className={styles.Article}>
-      <div
-        className={styles.ArticlePhoto}
-        style={{
-          backgroundImage: `url(${article.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className={styles.ArticleContent}>
-        <div className={styles.ArticleMeta}>
-          <div className={styles.ArticleMeta_Avatar}>
-            <Link to={`/@${article.author.username}`}>
-              <img src={article.author.image} alt={article.author.username} />
-            </Link>
-          </div>
-          <div className={styles.ArticleMeta_UserInfo}>
-            <div className={styles.UserInfo_Name}>
-              {article.author.username}
-            </div>
-            <div className={styles.UserInfo_Date}>
-              {new Date(article.createdAt).toLocaleDateString()}
-            </div>
-          </div>
-          <div className={styles.ArticleMeta_Button}>
-            <button className={favoriteButtonClass} onClick={handleClick}>
-              <i>
-                <img src={likeImage} />
-              </i>{" "}
-              {article.favoritesCount}
-            </button>
-          </div>
-        </div>
-        <div className={styles.ArticleContent_Content}>
-          <Link
-            to={`/article/${article.slug}`}
-            className={styles.ArticleContent_Preview}
-          >
-            <h1>{article.title}</h1>
-            <p>{article.description}</p>
-          </Link>
-          <div className={styles.ReadMoreAndTags}>
-
-            <Link to={`/article/${article.slug}`} className={styles.ReadMore_Link}>
-              <span className={styles.ReadMore}>Читать дальше</span>
-
-            </Link>
-            <TagList
-              tagList={article.tagList}
-              className={styles.TagList}
-              onClick={console.log}
-            />
-          </div>
-        </div>
+    <article className={styles.article}>
+      <div className={styles.articleImageContainer}>
+        <img
+          className={ styles.articleImage }
+          src={ article.image }
+          alt={ article.title }
+        />
       </div>
-    </div>
+      <div className={styles.articleContent}>
+        <header className={styles.articleMeta}>
+          <Link to={`/@${article.author.username}`} className={styles.metaLink}>
+            <img
+              className={styles.userAvatar}
+              src={article.author.image}
+              alt={article.author.username}
+              width='40'
+              height='40'
+            />
+            <div className={styles.userInfo}>
+              <div className={styles.userName}>
+                {article.author.username}
+              </div>
+              <time
+                dateTime={article.createdAt}
+                className={styles.createdDate}>
+                {new Date(article.createdAt).toLocaleDateString()}
+              </time>
+            </div>
+          </Link>
+          <button
+            className={ likeBtnClassName }
+            onClick={ likeBtnClickHandler }>
+            {article.favoritesCount}
+            <img
+              className={styles.likeIcon}
+              src={likeBtnIconSrc}
+              alt=''
+              aria-hidden='true' />
+          </button>
+        </header>
+        <Link
+          to={`/article/${article.slug}`}
+          className={styles.body}
+        >
+          <h2 className={styles.title}>{article.title}</h2>
+          <p className={styles.description}>{article.description}</p>
+        </Link>
+        <footer className={styles.footer}>
+          <Link to={`/article/${article.slug}`} className={styles.readMoreLink}>
+            Читать дальше
+          </Link>
+          <TagList
+            tagList={article.tagList}
+            className={styles.tagList}
+            onClick={console.log}
+          />
+        </footer>
+      </div>
+    </article>
   );
 }
 
-export default connect(() => ({}), mapDispatchToProps)(ArticlePreview);
+export default connect(null, mapDispatchToProps)(ArticlePreview);
