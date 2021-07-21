@@ -1,0 +1,13 @@
+.wrapper {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.title {
+  margin: 0 0 40px 0;
+}
+
+.icon {
+  fill: var(--text-primary-color);
+  height: 400px;
+}
