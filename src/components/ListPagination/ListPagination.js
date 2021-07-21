@@ -69,7 +69,7 @@ const ListPagination = props => {
     return v + 1;
   }
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul className={styles.pagination}>
         {
           range.map(v => {
