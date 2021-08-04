@@ -11,6 +11,7 @@ import Login from '../components/Login';
 import Profile from '../components/Profile';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
+import About from './About';
 import NotFound from './NotFound';
 import { store } from '../store';
 import { push } from 'react-router-redux';
@@ -65,6 +66,7 @@ class App extends React.Component {
               <Route path="/article/:id" component={Article} />
               <Route path="/settings" component={Settings} />
               <Route path="/@:username" component={Profile} />
+              <Route path="/about" component={About} />
               <Route component={NotFound} />
             </Switch>
         </>
