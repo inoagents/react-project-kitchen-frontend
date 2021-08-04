@@ -95,6 +95,24 @@ const newPostIcon = <svg
   />
 </svg>
 
+const aboutIcon = <svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M5.61536 22.7417V20H18.3846V22.7417C18.3846 22.8648 18.3521 22.9522 18.3244 23H5.67558C5.64787 22.9522 5.61536 22.8648 5.61536 22.7417Z"
+    stroke="#FAFAFA"
+    stroke-width="2"
+  />
+  <path
+    d="M15.8241 3.26377L16.2551 3.98133L17.0373 3.68342C17.4742 3.51701 17.9336 3.43172 18.448 3.43172C20.9039 3.43172 22.9768 5.52859 23 8.22427C22.9981 10.6366 21.3112 12.5803 19.1877 12.9439L18.3565 13.0862V13.9295V17H5.64353V13.9295V13.0862L4.81228 12.9439C2.68762 12.5801 1 10.6345 1 8.22026C1 5.5302 3.06857 3.43172 5.52681 3.43172C6.01847 3.43172 6.50282 3.51788 6.93746 3.68342L7.71968 3.98133L8.15065 3.26377C8.97585 1.88978 10.3851 1 11.9874 1C13.5897 1 14.9989 1.88978 15.8241 3.26377Z"
+    stroke="#FAFAFA"
+    stroke-width="2"
+  />
+</svg>
+
 const MenuLink = ({path, icon, text}) => (
   <li className={`nav-item ${styles.navItem}`}>
     <NavLink
@@ -123,6 +141,11 @@ const LoggedOutView = (props) => {
           text="Главная"
         />
         <MenuLink
+          path="/about"
+          icon={aboutIcon}
+          text="О проекте"
+        />
+        <MenuLink
           path="/login"
           icon={loginIcon}
           text="Войти"
@@ -141,6 +164,11 @@ const LoggedInView = (props) => {
           path="/"
           icon={homeIcon}
           text="Главная"
+        />
+        <MenuLink
+          path="/about"
+          icon={aboutIcon}
+          text="О проекте"
         />
         <MenuLink
           path="/editor"
