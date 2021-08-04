@@ -76,3 +76,7 @@ svg path {
 .navItem {
   margin: 0;
 }
+
+.navLink_userPic {
+  height: 24px;
+}
