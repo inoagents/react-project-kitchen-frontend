@@ -26,5 +26,5 @@
   composes: button from global;
   background-color: var(--colors-interface-error);
   width: fit-content;
-  margin: 0px auto 20px;
+  margin: 0 auto 20px;
 }
