@@ -58,7 +58,7 @@ class App extends React.Component {
           <Header
             appName={this.props.appName}
             currentUser={this.props.currentUser} />
-            <AnimatePresence exitBeforeEnter initial={false}>
+            <AnimatePresence exitBeforeEnter>
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={Login} />
