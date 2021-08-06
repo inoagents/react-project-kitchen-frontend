@@ -2,7 +2,10 @@ import React from 'react';
 import Banner from './Home/Banner';
 import { connect } from 'react-redux';
 import styles from './About.module.css';
-import reactLogo from '../images/react-ascii.png';
+// using absolute path to the image on the server
+// instead of the direct image import due to deployment issues:
+// import reactLogo from '../images/react-ascii.png';
+const reactLogo = "https://articles.hb.bizmrg.com/react-ascii.png";
 import { motion } from "framer-motion";
 import { animationVariants} from "../animation";
 
