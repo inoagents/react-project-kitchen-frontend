@@ -1,0 +1,30 @@
+.wrapper {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.content {
+  text-align: left;
+  width: 720px;
+  margin: 0 auto;
+}
+
+.image {
+  margin: 20px 0;
+}
+
+.donateWrapper h3 {
+  padding-top: 40px;
+  margin-bottom: 0;
+}
+
+.donateWrapper button {
+  margin: 20px;
+}
+
+.error {
+  composes: button from global;
+  background-color: var(--colors-interface-error);
+  width: fit-content;
+  margin: 0 auto 20px;
+}
