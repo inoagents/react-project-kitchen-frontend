@@ -12,6 +12,8 @@ import {
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR,
 } from "../constants/actionTypes";
+import { motion } from "framer-motion";
+import { animationVariants} from "../animation";
 
 const mapStateToProps = (state) => ({
   ...state.editor,
@@ -136,7 +138,13 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <div className="editor-page">
+      <motion.div
+        className="editor-page"
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={ animationVariants }
+      >
         <div className="container page">
           <div className="row">
             {this.isLoaded && (
@@ -284,7 +292,7 @@ class Editor extends React.Component {
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

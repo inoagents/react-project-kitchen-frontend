@@ -10,6 +10,8 @@ import {
 } from "../constants/actionTypes";
 import eyeIconClosed from "../images/eyeIconClosed.svg";
 import eyeIconOpened from "../images/eyeIconOpened.svg";
+import { motion } from "framer-motion";
+import { animationVariants} from "../animation";
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
@@ -108,7 +110,13 @@ class Login extends React.Component {
     }
 
     return (
-      <div className={`${styles.authPage} auth-page`}>
+      <motion.div
+        className={`${styles.authPage} auth-page`}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={ animationVariants }
+      >
         <div className="page">
           <div className="col-md-6 offset-md-3 col-xs-12">
             <h1 className={styles.title}>Войти</h1>
@@ -177,7 +185,7 @@ class Login extends React.Component {
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

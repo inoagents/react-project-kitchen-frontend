@@ -4,6 +4,8 @@ import agent from '../../agent';
 import styles from "./Home.module.css";
 import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
+import { motion } from "framer-motion";
+import { layoutVariants} from "../../animation";
 
 const YourFeedTab = props => {
   if (props.token) {
@@ -14,7 +16,7 @@ const YourFeedTab = props => {
 
     return (
       <li className="nav-item">
-        <a  href=""
+        <a href=""
             className={ props.tab === 'feed' ? `${styles.tabLink} ${styles.tabLinkActive}` : styles.tabLink }
             onClick={clickHandler}>
           Ваша лента
@@ -75,7 +77,8 @@ const MainView = props => {
           <YourFeedTab
             token={props.token}
             tab={props.tab}
-            onTabClick={props.onTabClick} />
+            onTabClick={props.onTabClick}
+            />
 
           <GlobalFeedTab tab={props.tab} onTabClick={props.onTabClick} />
 
@@ -83,13 +86,20 @@ const MainView = props => {
 
         </ul>
       </div>
-
-      <ArticleList
-        pager={props.pager}
-        articles={props.articles}
-        loading={props.loading}
-        articlesCount={props.articlesCount}
-        currentPage={props.currentPage} />
+      <motion.div
+        layout="position"
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={ layoutVariants }
+      >
+        <ArticleList
+          pager={props.pager}
+          articles={props.articles}
+          loading={props.loading}
+          articlesCount={props.articlesCount}
+          currentPage={props.currentPage} />
+      </motion.div>
     </div>
   );
 };
