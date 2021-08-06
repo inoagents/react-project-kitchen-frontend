@@ -24,10 +24,10 @@ const CommentContainer = props => {
     return (
       <div className={`flex_column ${styles.commentContainer}`}>
         <p className={styles.commentContainerItem}>
-          <Link to="/login" className="link">Sign in</Link>
-          &nbsp;or&nbsp;
-          <Link to="/register" className="link">sign up</Link>
-          &nbsp;to add comments on this article.
+          <Link to="/login" className="link">Войдите</Link>
+          &nbsp;или&nbsp;
+          <Link to="/register" className="link">зарегистрируйтесь</Link>
+          &nbsp;чтобы оставить здесь комментарий.
         </p>
 
         <CommentList
