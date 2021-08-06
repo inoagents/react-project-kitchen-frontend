@@ -64,7 +64,7 @@ const ArticleList = ({ articles, pager, articlesCount, currentPage }) => {
         articlesCount={articlesCount}
         currentPage={currentPage} />
     </motion.div>
-    
+
   );
 };
 

@@ -46,7 +46,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <motion.div 
+      <motion.div
         className="home-page"
         initial="initial"
         animate="enter"
