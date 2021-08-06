@@ -19,21 +19,11 @@ class About extends React.Component {
   }
 
   setError = () => {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        isError: true,
-      };
-    });
+    this.setState({ isError: true })
   };
 
   resetError = () => {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        isError: false,
-      };
-    });
+    this.setState({ isError: false })
   };
 
   render() {
