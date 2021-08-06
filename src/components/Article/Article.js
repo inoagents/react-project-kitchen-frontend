@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import marked from 'marked';
 import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../../constants/actionTypes';
 import styles from './Article.module.css';
+import { motion } from "framer-motion";
+import { animationVariants} from "../../animation";
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -55,55 +57,61 @@ function Article({
 
   const { title, image, tagList } = article;
   return (
-    <div className={styles.articlePage}>
-      <div className={styles.banner}>
-        <div className="container">
-          <ArticleMeta
-            article={article}
-            canModify={canModify} />
+    <motion.div
+      className={styles.articlePage}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      variants={ animationVariants }
+    >
+        <div className={styles.banner}>
+          <div className="container">
+            <ArticleMeta
+              article={article}
+              canModify={canModify} />
+          </div>
         </div>
-      </div>
-      <div className="container page">
-        <h1>{title}</h1>
-        <div
-          className={ styles.imageContainer }
-          style={ { backgroundImage: `url(${ image })` } }
-        >
-          <picture className={styles.picture}>
-            <img
-              src={ image }
-              alt={ title }
-              className={ styles.articleImage } />
-          </picture>
-        </div>
-        <div className={styles.articleContent}>
-          <div dangerouslySetInnerHTML={markup} />
-          <ul className="tag-list">
-            {
-              tagList.map(tag => {
-                return (
-                  <li
-                    className="tag-default tag-pill tag-outline"
-                    key={tag}>
-                    {tag}
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
+        <div className="container page">
+          <h1>{title}</h1>
+          <div
+            className={ styles.imageContainer }
+            style={ { backgroundImage: `url(${ image })` } }
+          >
+            <picture className={styles.picture}>
+              <img
+                src={ image }
+                alt={ title }
+                className={ styles.articleImage } />
+            </picture>
+          </div>
+          <div className={styles.articleContent}>
+            <div dangerouslySetInnerHTML={markup} />
+            <ul className="tag-list">
+              {
+                tagList.map(tag => {
+                  return (
+                    <li
+                      className="tag-default tag-pill tag-outline"
+                      key={tag}>
+                      {tag}
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
 
-        <hr />
+          <hr />
 
-        <div className={`flex_row ${styles.commentsContainer}`}>
-          <CommentContainer
-            comments={comments || []}
-            errors={commentErrors}
-            slug={match.params.id}
-            currentUser={currentUser} />
+          <div className={`flex_row ${styles.commentsContainer}`}>
+            <CommentContainer
+              comments={comments || []}
+              errors={commentErrors}
+              slug={match.params.id}
+              currentUser={currentUser} />
+          </div>
         </div>
-      </div>
-    </div>
+    </motion.div>
   );
 }
 

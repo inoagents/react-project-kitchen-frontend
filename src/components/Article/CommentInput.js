@@ -27,7 +27,7 @@ function CommentInput({ onSubmit, slug, currentUser }) {
     <form className={styles.commentInput} onSubmit={createComment}>
       <div className={styles.inputBlock}>
           <textarea className={styles.textArea}
-                    placeholder="Write a comment..."
+                    placeholder="Оставьте комментарий..."
                     value={body}
                     onChange={onChange}
                     rows="3">
@@ -38,7 +38,7 @@ function CommentInput({ onSubmit, slug, currentUser }) {
         <button
           className={`button ${styles.submitCommentButton}`}
           type="submit">
-          Post Comment
+          Опубликовать
         </button>
       </div>
     </form>

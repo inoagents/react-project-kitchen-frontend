@@ -8,6 +8,8 @@ import {
   REGISTER,
   REGISTER_PAGE_UNLOADED,
 } from "../constants/actionTypes";
+import { motion } from "framer-motion";
+import { animationVariants} from "../animation";
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
@@ -122,7 +124,13 @@ class Register extends React.Component {
     }
 
     return (
-      <div className={`${styles.authPage} auth-page`}>
+      <motion.div
+        className={`${styles.authPage} auth-page`}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={ animationVariants }
+      >
         <div className="container">
           <div className="row">
             <div className="col-md-6 offset-md-3 col-xs-12">
@@ -208,7 +216,7 @@ class Register extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

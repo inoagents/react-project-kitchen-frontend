@@ -9,6 +9,8 @@ import {
 } from "../constants/actionTypes";
 import eyeIconClosed from "../images/eyeIconClosed.svg";
 import eyeIconOpened from "../images/eyeIconOpened.svg";
+import { motion } from "framer-motion";
+import { animationVariants} from "../animation";
 
 class SettingsForm extends React.Component {
   constructor() {
@@ -226,7 +228,13 @@ const mapDispatchToProps = (dispatch) => ({
 class Settings extends React.Component {
   render() {
     return (
-      <div className={`${styles.settingsPage} settings-page`}>
+      <motion.div
+        className={`${styles.settingsPage} settings-page`}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={ animationVariants }
+      >
         <h1 className={`${styles.title} text-xs-center`}>Ваши настройки</h1>
 
         <SettingsForm
@@ -235,7 +243,7 @@ class Settings extends React.Component {
           currentUser={this.props.currentUser}
           onSubmitForm={this.props.onSubmitForm}
         />
-      </div>
+      </motion.div>
     );
   }
 }

@@ -15,7 +15,10 @@ const ArticleMetaUserInfo = props => {
           {props.username}
         </Link>
         <span className={styles.info_Date}>
-          {props.createdAt ? new Date(props.createdAt).toDateString() : null}
+          {props.createdAt ? new Date(props.createdAt).toLocaleDateString(
+            'ru-RU',
+            { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+          ) : null}
         </span>
       </div>
     </>

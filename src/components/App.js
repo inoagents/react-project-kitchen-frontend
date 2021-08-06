@@ -15,6 +15,7 @@ import About from './About';
 import NotFound from './NotFound';
 import { store } from '../store';
 import { push } from 'react-router-redux';
+import { AnimatePresence } from "framer-motion";
 
 const mapStateToProps = state => {
   return {
@@ -57,18 +58,20 @@ class App extends React.Component {
           <Header
             appName={this.props.appName}
             currentUser={this.props.currentUser} />
-            <Switch>
-              <Route exact path="/" component={Home}/>
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Route path="/editor/:slug" component={Editor} />
-              <Route path="/editor" component={Editor} />
-              <Route path="/article/:id" component={Article} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/@:username" component={Profile} />
-              <Route path="/about" component={About} />
-              <Route component={NotFound} />
-            </Switch>
+            <AnimatePresence exitBeforeEnter>
+              <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/editor/:slug" component={Editor} />
+                <Route path="/editor" component={Editor} />
+                <Route path="/article/:id" component={Article} />
+                <Route path="/settings" component={Settings} />
+                <Route path="/@:username" component={Profile} />
+                <Route path="/about" component={About} />
+                <Route component={NotFound} />
+              </Switch>
+            </AnimatePresence>
         </>
       );
     }

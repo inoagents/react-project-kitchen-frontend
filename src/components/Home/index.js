@@ -9,6 +9,8 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
+import { motion } from "framer-motion";
+import { layoutVariants} from "../../animation";
 
 const Promise = global.Promise;
 
@@ -44,21 +46,27 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home-page">
+      <motion.div
+        className="home-page"
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={ layoutVariants }
+      >
 
-        <Banner appName={this.props.appName} appTagline={this.props.appTagline} />
-        <div className="container page">
+          <Banner appName={this.props.appName} appTagline={this.props.appTagline} />
+          <div className="container page">
 
-          <div className="row">
-            <MainView />
-            <Tags
-              tags={this.props.tags}
-              onClickTag={this.props.onClickTag}
-            />
+            <div className="row">
+              <MainView />
+              <Tags
+                tags={this.props.tags}
+                onClickTag={this.props.onClickTag}
+              />
+            </div>
           </div>
-        </div>
 
-      </div>
+      </motion.div>
     );
   }
 }
