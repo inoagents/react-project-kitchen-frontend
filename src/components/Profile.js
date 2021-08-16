@@ -252,7 +252,7 @@ class Profile extends React.Component {
 
             <Tags
               tags={this.props.tags}
-              author={this.props.currentUser.username}
+              author={profile.username}
               onClickTag={this.props.onClickTag}
             />
 
