@@ -64,16 +64,23 @@ const FollowUserButton = props => {
     }
   };
 
+  const buttonText = props.user.following ? 'Отписаться' : 'Подписаться';
+
   return (
     <button
       className={`btn ${styles.bannerButton}`}
+      // only authorized user can like articles
+      style={ props.isGuest ? {opacity: 0.5} : null }
+      disabled={ props.isGuest ? true : false }
+      title={ props.isGuest ?
+      "Авторизуйтесь, чтобы подписаться" : buttonText }
       onClick={handleClick}>
       {props.user.following ? (
         minusIcon()
       ) : (
         plusIcon()
       )}
-      {props.user.following ? 'Отписаться' : 'Подписаться'}
+      {buttonText}
     </button>
   );
 };
@@ -209,6 +216,8 @@ class Profile extends React.Component {
     const isUser = this.props.currentUser &&
       this.props.profile.username === this.props.currentUser.username;
 
+    const isGuest = this.props.currentUser === null;
+
     return (
       <div className="profile-page">
 
@@ -224,6 +233,7 @@ class Profile extends React.Component {
                 <EditProfileSettings isUser={isUser} />
                 <FollowUserButton
                   isUser={isUser}
+                  isGuest={isGuest}
                   user={profile}
                   follow={this.props.onFollow}
                   unfollow={this.props.onUnfollow}
