@@ -15,6 +15,10 @@ import unlike from "../../images/unlike.svg";
 
 import styles from "./ArticlePreview.module.css";
 
+const mapStateToProps = state => ({
+  currentUser: state.common.currentUser
+});
+
 const mapDispatchToProps = ( dispatch ) => ( {
   // todo переписать на одной действие - LIKE_TOGGLE
   favorite: (slug) =>
@@ -29,7 +33,7 @@ const mapDispatchToProps = ( dispatch ) => ( {
     }),
 });
 
-function ArticlePreview({ article, favorite, unfavorite }) {
+function ArticlePreview({ article, favorite, unfavorite, currentUser }) {
   const likeBtnClickHandler = useCallback(
     (ev) => {
       ev.preventDefault();
@@ -40,11 +44,14 @@ function ArticlePreview({ article, favorite, unfavorite }) {
     [article, favorite, unfavorite]
   );
 
+  const isGuest = currentUser === null;
+
   const likeBtnClassName = article.favorited ?
     `${ styles.likeBtn } ${ styles.likeBtnActive }` :
     styles.likeBtn;
 
   const likeBtnIconSrc = article.favorited ? unlike : like;
+  const likeBtnText = article.favorited ? "Убрать лайк" : "Поставить лайк";
 
   return (
     <article className={styles.article}>
@@ -78,6 +85,11 @@ function ArticlePreview({ article, favorite, unfavorite }) {
           </Link>
           <button
             className={ likeBtnClassName }
+            // only authorized user can like articles
+            style={ isGuest ? {opacity: 0.5} : null }
+            disabled={ isGuest ? true : false }
+            title={ isGuest ?
+              "Авторизуйтесь, чтобы поставить лайк" : likeBtnText }
             onClick={ likeBtnClickHandler }>
             {article.favoritesCount}
             <img
@@ -109,4 +121,4 @@ function ArticlePreview({ article, favorite, unfavorite }) {
   );
 }
 
-export default connect(null, mapDispatchToProps)(ArticlePreview);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlePreview);
